@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace EntityLayer.Concrete
 {
     public class Timesheet
     {
+        [Key]
         public int? TimesheetID { get; set; }  // Zaman çizelgesi ID'si
         public string? Week { get; set; }  // Zaman çizelgesi hafta adı
         public int Monday { get; set; }

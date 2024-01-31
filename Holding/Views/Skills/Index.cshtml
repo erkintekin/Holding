@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model List<Skill>
+<h1>Skill Listesi</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Adı</th>
+            <th>Açıklama</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SkillID</td>
+                <td>@item.SkillName</td>
+                <td>@item.SkillDescription</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

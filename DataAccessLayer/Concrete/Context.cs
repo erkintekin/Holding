@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-    public class Context:DbContext
+    public class Context : DbContext
     {
+        public Context(DbContextOptions<Context> options) : base(options) { }
         public DbSet<Employee>? Employees { get; set; }
         public DbSet<Company>? Companies { get; set; }
         public DbSet<Customer>? Customers { get; set; }

@@ -22,7 +22,7 @@ namespace BusinessLayer.Concrete
             _skillRepository.Create(skill);
         }
         public Skill GetSkillById(int id) => _skillRepository.List.FirstOrDefault(s => s.SkillID == id);
-        public List<Skill> GetSkills() => _skillRepository.List.ToList();
+        public List<Skill> GetAllSkills() => _skillRepository.List.ToList();
         public void RemoveSkill(Skill skill)
         {
             _skillRepository.Delete(skill);

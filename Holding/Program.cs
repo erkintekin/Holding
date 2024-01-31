@@ -1,7 +1,21 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
+using DataAccessLayer.Concrete.Repositories;
+using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon")));
+
+builder.Services.AddScoped<ISkillService, SkillManager>();
+builder.Services.AddScoped<IRepository<Skill>, GenericRepository<Skill>>();
+
 
 var app = builder.Build();
 

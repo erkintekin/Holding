@@ -1,7 +1,10 @@
-﻿namespace EntityLayer.Concrete
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace EntityLayer.Concrete
 {
     public class Employee
     {
+        [Key]
         public int? EmployeeID { get; set; }  // Çalışan ID'si  
         public string? TCKN { get; set; }  // Çalışan TC Kimlik No.su  
         public int? RegNo { get; set; }  // Çalışan sicil no.  

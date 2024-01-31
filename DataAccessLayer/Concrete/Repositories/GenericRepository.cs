@@ -11,23 +11,15 @@ namespace DataAccessLayer.Concrete.Repositories
     public class GenericRepository<T> : IRepository<T> where T : class
     {
         private readonly Context _context;    // Dependency Injection
-
         public GenericRepository(Context context)
         {
             _context = context;
         }
-
-        IQueryable<T> IRepository<T>.List => _context.Set<T>().AsQueryable();
-
         public void Create(T p)
         {
             _context.Set<T>().Add(p);
         }
-
-        public List<T> List()
-        {
-            return _context.Set<T>().ToList();
-        }
+        IQueryable<T> IRepository<T>.List => _context.Set<T>().AsQueryable();
         public void Update(T p)
         {
             _context.Set<T>().Update(p);
@@ -36,7 +28,5 @@ namespace DataAccessLayer.Concrete.Repositories
         {
             _context.Set<T>().Remove(p);
         }
-
-
     }
 }

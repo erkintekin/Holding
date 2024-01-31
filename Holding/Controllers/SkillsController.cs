@@ -1,29 +1,52 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Packaging;
 
 namespace Holding.Controllers
 {
-    public class EmployeeController : Controller
+    public class SkillsController : Controller
     {
-        // GET: EmployeeController
-        public ActionResult Index()
+        private readonly ISkillService _skillService;
+        private readonly Context _context;
+        private readonly IRepository<Skill> _skillRepository;
+
+        public SkillsController(ISkillService skillService, Context context)
         {
-            return View();
+            _skillService = skillService;
+            _context = context;
+            if (!_skillService.GetAllSkills().Any())
+            {
+                _context.Skills.AddRange(
+                     new Skill { SkillName = "C#", SkillDescription = "Çok iyi biliyorum." },
+                     new Skill { SkillName = "Python", SkillDescription = "İdare edecek kadar biliyorum" }
+                     );
+                _context.SaveChanges();
+            }
         }
 
-        // GET: EmployeeController/Details/5
+        // GET: SkillsController
+        public ActionResult Index()
+        {
+            var skills = _skillService.GetAllSkills();
+            return View(skills);
+        }
+
+        // GET: SkillsController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: EmployeeController/Create
+        // GET: SkillsController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: EmployeeController/Create
+        // POST: SkillsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -38,13 +61,13 @@ namespace Holding.Controllers
             }
         }
 
-        // GET: EmployeeController/Edit/5
+        // GET: SkillsController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: EmployeeController/Edit/5
+        // POST: SkillsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -59,13 +82,13 @@ namespace Holding.Controllers
             }
         }
 
-        // GET: EmployeeController/Delete/5
+        // GET: SkillsController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: EmployeeController/Delete/5
+        // POST: SkillsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

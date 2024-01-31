@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace EntityLayer.Concrete
 {
     public class Payroll
     {
-
+        [Key]
         public int? PayrollID { get; set; }  // Bordro numarası
         public string? Month { get; set; }  // Bordro ayı
         public int? BeforeTax { get; set; } //Brüt Maaş

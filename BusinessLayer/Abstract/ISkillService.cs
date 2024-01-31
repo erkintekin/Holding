@@ -10,7 +10,7 @@ namespace BusinessLayer.Abstract
     public interface ISkillService
     {
         void CreateSkill(Skill skill);
-        List<Skill> GetSkills();
+        List<Skill> GetAllSkills();
         Skill GetSkillById(int id);
         void UpdateSkill(Skill skill);
         void RemoveSkill(Skill skill);
