@@ -8,23 +8,18 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete.Repositories
 {
-    public class Generic_Repository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : class
     {
         private readonly Context _context;    // Dependency Injection
 
-        public Generic_Repository(Context context) 
+        public GenericRepository(Context context)
         {
             _context = context;
         }
 
         IQueryable<T> IRepository<T>.List => _context.Set<T>().AsQueryable();
 
-        public void Delete(T p)
-        {
-            _context.Set<T>().Remove(p);
-        }
-
-        public void Insert(T p)
+        public void Create(T p)
         {
             _context.Set<T>().Add(p);
         }
@@ -33,20 +28,15 @@ namespace DataAccessLayer.Concrete.Repositories
         {
             return _context.Set<T>().ToList();
         }
-
-        //public T Get(Expression<Func<T, bool>> filter)
-        //{
-        //    return _context.Find
-        //}
-
-        //public List<T> List(Expression<Func<T, bool>> filter)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public void Update(T p)
         {
             _context.Set<T>().Update(p);
         }
+        public void Delete(T p)
+        {
+            _context.Set<T>().Remove(p);
+        }
+
+
     }
 }

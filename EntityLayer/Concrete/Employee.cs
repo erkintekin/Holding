@@ -13,7 +13,7 @@
         public string? Title { get; set; }  // Çalışan ünvanı
         public double? Wage { get; set; }  // Çalışan maaşı (aylık)
         public DateTime? StartDate { get; set; }  // Çalışan işe başlangıç günü
-        public DateTime? Birthday { get; } // Çalışan doğum günü  
+        public DateTime? Birthday { get; set; } // Çalışan doğum günü  
         public string? Image { get; set; }  // Çalışan fotoğrafı
         public int? DepartmentID { get; set; }  // Çalışana ait departman numarası - Unique
         public Department? Department { get; set; }

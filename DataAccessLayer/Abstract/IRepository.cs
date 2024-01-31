@@ -9,13 +9,9 @@ namespace DataAccessLayer.Abstract
 {
     public interface IRepository<T>
     {
-        IQueryable<T> List {  get; }
-        void Insert(T p);
-        //T Get(Expression<Func<T, bool>> filter); // Silme işlemi yapmak için tek bir değer tutacak burada koşullu olarak tutacağı değer ID olacak
-        void Delete(T p);
+        void Create(T p);
+        IQueryable<T> List { get; }
         void Update(T p);
-
-        //List<T> List(Expression<Func<T, bool>> filter);
-
+        void Delete(T p);
     }
 }

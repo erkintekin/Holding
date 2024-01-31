@@ -11,11 +11,5 @@ namespace EntityLayer.Concrete
         public int? SkillID { get; set; }  // Yetenek ID'si
         public string? SkillName { get; set; }  // Yetenek adı
         public string? SkillDescription { get; set; }  // Yetenek açıklaması (opsiyonel)
-
-
-
-
-
-
     }
 }
