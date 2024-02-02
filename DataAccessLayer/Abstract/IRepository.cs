@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,9 +10,9 @@ namespace DataAccessLayer.Abstract
 {
     public interface IRepository<T>
     {
-        void Create(T p);
+        Task Create(T p);
         IQueryable<T> List { get; }
-        void Update(T p);
-        void Delete(T p);
+        Task Update(T p);
+        Task Delete(T p);
     }
 }

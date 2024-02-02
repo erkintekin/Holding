@@ -11,13 +11,12 @@ namespace Holding.Controllers
     {
         private readonly ISkillService _skillService;
         private readonly Context _context;
-        private readonly IRepository<Skill> _skillRepository;
 
         public SkillsController(ISkillService skillService, Context context)
         {
             _skillService = skillService;
             _context = context;
-            if (!_skillService.GetAllSkills().Any())
+            if (!_context.Skills.Any())
             {
                 _context.Skills.AddRange(
                      new Skill { SkillName = "C#", SkillDescription = "Çok iyi biliyorum." },
@@ -28,9 +27,9 @@ namespace Holding.Controllers
         }
 
         // GET: SkillsController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var skills = _skillService.GetAllSkills();
+            var skills = await _skillService.GetAllSkills();
             return View(skills);
         }
 
@@ -49,15 +48,16 @@ namespace Holding.Controllers
         // POST: SkillsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Skill skill)
         {
             try
             {
+                _skillService.CreateSkill(skill);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(skill);
             }
         }
 

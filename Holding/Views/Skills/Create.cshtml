@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+@model Skill
+
+<h1>Beceri Oluştur</h1>
+<form asp-controller="Skills" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="SkillName">Beceri Giriniz</label>
+        <input asp-for="SkillName" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="SkillDescription">Beceri Açıklaması</label>
+        <input asp-for="SkillDescription" />
+    </div>
+    <button type="submit" class="btn btn-success"></button>
+</form>

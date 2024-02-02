@@ -21,8 +21,9 @@ namespace BusinessLayer.Concrete
         {
             _skillRepository.Create(skill);
         }
-        public Skill GetSkillById(int id) => _skillRepository.List.FirstOrDefault(s => s.SkillID == id);
-        public List<Skill> GetAllSkills() => _skillRepository.List.ToList();
+
+        public async Task<List<Skill>> GetAllSkills() => await _skillRepository.List.ToListAsync();
+        public async Task<Skill> GetSkillById(int id) => await _skillRepository.List.FirstOrDefaultAsync(s => s.SkillID == id);
         public void RemoveSkill(Skill skill)
         {
             _skillRepository.Delete(skill);
