@@ -1,0 +1,22 @@
+<<<<<<< HEAD
+﻿﻿@{
+=======
+﻿@{
+>>>>>>> 21d2f011126ba6a75584e3b7181e2075de6c8aa7
+    ViewData["Title"] = "Edit";
+}
+@model Skill
+<h1>Beceri Güncelle</h1>
+
+<form asp-controller="Skills" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="SkillID" />
+    <div class="mb-3">
+        <label class="form-label" for="SkillName"></label>
+        <input class="form-control" asp-for="SkillName" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="SkillDescription"></label>
+        <input class="form-control" asp-for="SkillDescription" />
+    </div>
+    <button type="submit" class="btn btn-outline-primary">GÜNCELLE</button>
+</form>

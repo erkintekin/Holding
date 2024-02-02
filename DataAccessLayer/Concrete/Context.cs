@@ -1,5 +1,7 @@
 ﻿using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
+
     public class Context : DbContext
     {
         public Context(DbContextOptions<Context> options) : base(options) { }
@@ -21,4 +24,5 @@ namespace DataAccessLayer.Concrete
         public DbSet<Skill>? Skills { get; set; }
         public DbSet<Timesheet>? Timesheets { get; set; }
     }
+
 }

@@ -11,7 +11,9 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int? TimesheetID { get; set; }  // Zaman çizelgesi ID'si
-        public string? Week { get; set; }  // Zaman çizelgesi hafta adı
+        public string? Year { get; set; }  // Zaman çizelgesi yılı
+        public string? Month { get; set; }  // Zaman çizelgesi ayı
+        public string? Week { get; set; }  // Zaman çizelgesi haftası
         public int Monday { get; set; }
         public int Tuesday { get; set; }
         public int Wednesday { get; set; }

@@ -12,25 +12,26 @@ namespace BusinessLayer.Concrete
 {
     public class SkillManager : ISkillService
     {
-        private readonly IRepository<Skill> _skillRepository;
+        private readonly IRepository<Skill> _SkillRepository;
+
         public SkillManager(IRepository<Skill> skillRepository)
         {
-            _skillRepository = skillRepository;
+            _SkillRepository = skillRepository;
         }
         public void CreateSkill(Skill skill)
         {
-            _skillRepository.Create(skill);
+            _SkillRepository.Create(skill);
         }
 
-        public async Task<List<Skill>> GetAllSkills() => await _skillRepository.List.ToListAsync();
-        public async Task<Skill> GetSkillById(int id) => await _skillRepository.List.FirstOrDefaultAsync(s => s.SkillID == id);
+        public async Task<List<Skill>>? GetAllSkills() => await _SkillRepository.List.ToListAsync();
+        public async Task<Skill>? GetSkillById(int id) => await _SkillRepository.List.FirstOrDefaultAsync(s => s.SkillID == id);
         public void RemoveSkill(Skill skill)
         {
-            _skillRepository.Delete(skill);
+            _SkillRepository.Delete(skill);
         }
         public void UpdateSkill(Skill skill)
         {
-            _skillRepository.Update(skill);
+            _SkillRepository.Update(skill);
         }
     }
 }
