@@ -110,12 +110,9 @@ namespace Holding.Controllers
         // POST: SkillsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id, Skill skill)
+        [ActionName(nameof(Delete))]
+        public async Task<ActionResult> DeletePost(int id)
         {
-            if (id != skill.SkillID)
-            {
-                return NotFound();
-            }
             try
             {
                 var deleteSkill = await _skillService.GetSkillById(id);
@@ -128,7 +125,7 @@ namespace Holding.Controllers
             }
             catch
             {
-                return View(skill);
+                return View();
             }
         }
     }
