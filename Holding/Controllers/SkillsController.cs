@@ -115,6 +115,8 @@ namespace Holding.Controllers
         {
             try
             {
+
+                //deneme
                 var deleteSkill = await _skillService.GetSkillById(id);
                 if (deleteSkill == null)
                 {
