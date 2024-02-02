@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-﻿﻿@{
-=======
+
 ﻿@{
->>>>>>> 21d2f011126ba6a75584e3b7181e2075de6c8aa7
+
     ViewData["Title"] = "Delete";
 }
 @model Skill
@@ -11,11 +9,11 @@
     <strong>@Model.SkillName</strong> isimli beceriyi silmek istediğinizden emin misiniz?
 </p>
 <form asp-action="Delete" asp-controller="Skills" method="post">
-<<<<<<< HEAD
+
     <input type="hidden" asp-for="SkillID">
-=======
+
     <input type="hidden" asp-for="@Model.SkillID">
->>>>>>> 21d2f011126ba6a75584e3b7181e2075de6c8aa7
+
     <button type="submit" class="btn btn-danger">Evet</button>
     <a asp-action="Index" asp-controller="Skills" class="btn btn-primary">Hayır</a>
 </form>
