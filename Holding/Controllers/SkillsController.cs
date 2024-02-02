@@ -62,44 +62,73 @@ namespace Holding.Controllers
         }
 
         // GET: SkillsController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var skill = await _skillService.GetSkillById(id);
+            if (skill == null)
+            {
+                return NotFound();
+            }
+            return View(skill);
         }
 
         // POST: SkillsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Skill skill)
         {
+            if (id != skill.SkillID)
+            {
+                return NotFound();
+            }
             try
             {
+                _skillService.UpdateSkill(skill);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(skill);
             }
         }
 
         // GET: SkillsController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var skill = await _skillService.GetSkillById(id);
+            if (skill == null)
+            {
+                return NotFound();
+            }
+            return View(skill);
         }
 
         // POST: SkillsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, Skill skill)
         {
+            if (id != skill.SkillID)
+            {
+                return NotFound();
+            }
             try
             {
+                var deleteSkill = await _skillService.GetSkillById(id);
+                if (deleteSkill == null)
+                {
+                    return NotFound();
+                }
+                _skillService.RemoveSkill(deleteSkill);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(skill);
             }
         }
     }

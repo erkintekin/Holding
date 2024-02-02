@@ -10,6 +10,7 @@
             <th>@Html.DisplayNameFor(m => m.SkillID)</th>
             <th>@Html.DisplayNameFor(m => m.SkillName)</th>
             <th>@Html.DisplayNameFor(m => m.SkillDescription)</th>
+            <th>İşlemler</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,14 @@
                 <td>@item.SkillID</td>
                 <td>@item.SkillName</td>
                 <td>@item.SkillDescription</td>
+                <td>
+                    <div class="btn-group">
+                        <a asp-controller="Skills" asp-action="Edit" asp-route-id="@item.SkillID" class="btn btn-sm btn-primary">
+                            Edit
+                        </a>
+                        <a asp-controller="Skills" asp-action="Delete" asp-route-id="@item.SkillID" class="btn btn-sm btn-danger">Sil</a>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
