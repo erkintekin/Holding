@@ -6,12 +6,12 @@
 <h1>Beceri Oluştur</h1>
 <form asp-controller="Skills" asp-action="Create" method="post">
     <div class="mb-3">
-        <label asp-for="SkillName">Beceri Giriniz</label>
-        <input asp-for="SkillName" />
+        <label for="SkillName" class="form-label">Beceri Giriniz</label>
+        <input asp-for="SkillName" class="form-control" />
     </div>
     <div class="mb-3">
-        <label asp-for="SkillDescription">Beceri Açıklaması</label>
-        <input asp-for="SkillDescription" />
+        <label for="SkillDescription" class="form-label">Beceri Açıklaması</label>
+        <input asp-for="SkillDescription" class="form-control" />
     </div>
-    <button type="submit" class="btn btn-success"></button>
+    <button type="submit" class="btn btn-success">Kaydet</button>
 </form>

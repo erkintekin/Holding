@@ -1,15 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Index";
 }
-@model List<Skill>
+@model IEnumerable<Skill>
 <h1>Skill Listesi</h1>
 <a class="btn btn-outline-primary" asp-controller="Skills" asp-action="Create">Beceri Ekle</a>
-<table>
+<table class="table table-hover table-dark table-striped table-bordered">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Adı</th>
-            <th>Açıklama</th>
+            <th>@Html.DisplayNameFor(m => m.SkillID)</th>
+            <th>@Html.DisplayNameFor(m => m.SkillName)</th>
+            <th>@Html.DisplayNameFor(m => m.SkillDescription)</th>
         </tr>
     </thead>
     <tbody>

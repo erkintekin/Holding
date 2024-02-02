@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Holding", "Holding\Holding.csproj", "{574B2C72-2313-443E-A2ED-C0559DBBD33E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Holding", "Holding\Holding.csproj", "{574B2C72-2313-443E-A2ED-C0559DBBD33E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{3584DE09-C17E-461B-AB7E-7E09C9A85B66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{3584DE09-C17E-461B-AB7E-7E09C9A85B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{C5C04FA6-CB10-4A5A-93BF-0D4C23AE4352}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{C5C04FA6-CB10-4A5A-93BF-0D4C23AE4352}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{7BFEBE4F-932B-4473-87FD-F40F69C891D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{7BFEBE4F-932B-4473-87FD-F40F69C891D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
