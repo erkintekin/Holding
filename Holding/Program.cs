@@ -15,6 +15,8 @@ builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.C
 
 builder.Services.AddScoped<ISkillService, SkillManager>();
 builder.Services.AddScoped<IRepository<Skill>, GenericRepository<Skill>>();
+builder.Services.AddScoped<IEquipmentService, EquipmentManager>();
+builder.Services.AddScoped<IRepository<Equipment>, GenericRepository<Equipment>>();
 
 var app = builder.Build();
 
