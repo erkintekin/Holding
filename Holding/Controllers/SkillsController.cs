@@ -53,6 +53,7 @@ namespace Holding.Controllers
             try
             {
                 _skillService.CreateSkill(skill);
+                TempData["status"] = "Yeni beceri başarılı şekilde eklendi!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -84,6 +85,7 @@ namespace Holding.Controllers
             try
             {
                 _skillService.UpdateSkill(skill);
+                TempData["status"] = "Beceri başarılı bir şekilde güncellendi.";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -123,11 +125,12 @@ namespace Holding.Controllers
                     return NotFound();
                 }
                 _skillService.RemoveSkill(deleteSkill);
+                TempData["status"] = "Beceri başarılı bir şekilde silindi.";
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                throw new Exception("Silme işlemi başarısız!" + ex);
             }
         }
     }
