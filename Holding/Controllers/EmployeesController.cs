@@ -1,29 +1,45 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Holding.Controllers
 {
     public class EmployeesController : Controller
     {
-        // GET: EmployeesController
+        private readonly IEmployeeService _employeeService;
+        private readonly Context _context;
+
+        public EmployeesController(IEmployeeService employeeService, Context context)
+        {
+            _employeeService = employeeService;
+            _context = context;
+            if (!_context.Employees.Any())
+            {
+                _context.Employees.AddRange(
+                    new Employee() { }
+                    );
+            }
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: EmployeesController/Details/5
+
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: EmployeesController/Create
+   
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: EmployeesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -38,13 +54,11 @@ namespace Holding.Controllers
             }
         }
 
-        // GET: EmployeesController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: EmployeesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -59,13 +73,11 @@ namespace Holding.Controllers
             }
         }
 
-        // GET: EmployeesController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: EmployeesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

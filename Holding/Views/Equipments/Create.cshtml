@@ -1,0 +1,23 @@
+﻿﻿@{
+    ViewData["Title"] = "Create";
+}
+@model Equipment
+
+<h1>Ekipman Ekle</h1>
+
+<form asp-controller="Equipments" asp-action="Create" method="post">
+
+    <input type="hidden" asp-for="EquipmentID" class="form-control" />
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="EquipmentName"></label>
+        <input asp-for="EquipmentName" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+
+
+</form>
+
+
+

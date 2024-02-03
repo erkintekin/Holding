@@ -26,26 +26,24 @@ namespace Holding.Controllers
             }
         }
 
-        // GET: SkillsController
         public async Task<ActionResult> Index()
         {
             var skills = await _skillService.GetAllSkills();
             return View(skills);
         }
 
-        // GET: SkillsController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
-        // GET: SkillsController/Create
+        //public ActionResult Details(int id)
+        //{
+        //    return View();
+        //}
+
+   
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: SkillsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Skill skill)
@@ -61,7 +59,7 @@ namespace Holding.Controllers
             }
         }
 
-        // GET: SkillsController/Edit/5
+ 
         public async Task<ActionResult> Edit(int id)
         {
             var skill = await _skillService.GetSkillById(id);
@@ -72,7 +70,6 @@ namespace Holding.Controllers
             return View(skill);
         }
 
-        // POST: SkillsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Skill skill)
@@ -92,7 +89,6 @@ namespace Holding.Controllers
             }
         }
 
-        // GET: SkillsController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
             if (id == null)
@@ -107,22 +103,16 @@ namespace Holding.Controllers
             return View(skill);
         }
 
-        // POST: SkillsController/Delete/5
+
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-<<<<<<< HEAD
-        public async Task<ActionResult> DeleteSkill(int id)
-        {
-            
-=======
         public async Task<ActionResult> Delete(int id, Skill skill)
         {
             if (id != skill.SkillID)
             {
                 return NotFound();
             }
->>>>>>> 21d2f011126ba6a75584e3b7181e2075de6c8aa7
             try
             {
                 var deleteSkill = await _skillService.GetSkillById(id);
@@ -135,11 +125,8 @@ namespace Holding.Controllers
             }
             catch(Exception ex)
             {
-<<<<<<< HEAD
                 return NotFound(ex);
-=======
-                return View(skill);
->>>>>>> 21d2f011126ba6a75584e3b7181e2075de6c8aa7
+
             }
            
         }

@@ -14,9 +14,5 @@ namespace BusinessLayer.Abstract
         Task<Employee> GetEmployeeById(int id);
         void UpdateEmployee(Employee employee);
         void RemoveEmployee(Employee employee);
-<<<<<<< HEAD
-
-=======
->>>>>>> 21d2f011126ba6a75584e3b7181e2075de6c8aa7
     }
 }

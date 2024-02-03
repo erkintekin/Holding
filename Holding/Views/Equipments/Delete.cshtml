@@ -1,0 +1,20 @@
+
+﻿@{
+
+    ViewData["Title"] = "Delete";
+}
+@model Equipment
+
+<p>
+    <strong>@Model.EquipmentName</strong> isimli beceriyi silmek istediğinizden emin misiniz?
+</p>
+<form asp-action="Delete" asp-controller="Equipments" method="post">
+
+    <input type="hidden" asp-for="EquipmentID">
+
+    <input type="hidden" asp-for="@Model.EquipmentID">
+
+    <button type="submit" class="btn btn-danger">Evet</button>
+
+    <a asp-action="Index" asp-controller="Equipments" class="btn btn-primary">Hayır</a>
+</form>

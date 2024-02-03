@@ -12,7 +12,6 @@ namespace BusinessLayer.Concrete
 {
     public class CompanyManager : ICompanyService
     {
-<<<<<<< HEAD
         private readonly IRepository<Company> _CompanyRepository;
         public CompanyManager(IRepository<Company> CompanyRepository)
         {
@@ -37,27 +36,6 @@ namespace BusinessLayer.Concrete
         public void UpdateCompany(Company Company)
         {
             _CompanyRepository.Update(Company);
-=======
-        private readonly IRepository<Company> _companyRepository;
-        public CompanyManager(IRepository<Company> companyRepository)
-        {
-            _companyRepository = companyRepository;
-        }
-        public void CreateCompany(Company company)
-        {
-            _companyRepository.Create(company);
-        }
-
-        public async Task<List<Company>> GetAllCompanys() => await _companyRepository.List.ToListAsync();
-        public async Task<Company> GetCompanyById(int id) => await _companyRepository.List.FirstOrDefaultAsync(s => s.CompanyID == id);
-        public void RemoveCompany(Company company)
-        {
-            _companyRepository.Delete(company);
-        }
-        public void UpdateCompany(Company company)
-        {
-            _companyRepository.Update(company);
->>>>>>> 21d2f011126ba6a75584e3b7181e2075de6c8aa7
         }
     }
 }
