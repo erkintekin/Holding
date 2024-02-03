@@ -111,7 +111,7 @@ namespace Holding.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName(nameof(Delete))]
-        public async Task<ActionResult> DeletePost(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             try
             {
