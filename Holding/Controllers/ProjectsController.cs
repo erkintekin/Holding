@@ -10,68 +10,76 @@ namespace Holding.Controllers
     public class ProjectsController : Controller
     {
         private readonly IProjectService _projectService;
+        private readonly ICompanyService _companyService;
         private readonly Context? _context;
 
-        public ProjectsController(IProjectService projectService, Context? context)
+        public ProjectsController(IProjectService projectService, ICompanyService companyService, Context? context)
         {
             _projectService = projectService;
+            _companyService = companyService;
             _context = context;
 
 
-            if (!_context.Companies.Any())
-            {
-                _context.Companies.AddRange(
-                    new Company
-                    {
-                        CompanyName = "Cengiz İnşaat"
-                    },
-                     new Company
-                     {
-                         CompanyName = "yemek.com"
-                     });
+            //if (!_context.Companies.Any())
+            //{
+            //    _context.Companies.AddRange(
+            //        new Company
+            //        {
+            //            CompanyName = "Cengiz İnşaat"
+            //        },
+            //         new Company
+            //         {
+            //             CompanyName = "yemek.com"
+            //         });
 
-                _context.SaveChanges();
-            }
+            //    _context.SaveChanges();
+            //}
 
-            if (!_context.Projects.Any())
-            {
+            //if (!_context.Projects.Any())
+            //{
 
-                _context.Projects.AddRange(
-                    new Project
-                    {
-                        ProjectName = "E-ticaret Sitesi Fullstack Projesi",
-                        ProjectNo = 17283,
-                        Proficiencies =  "C#,.NET,React,HTML/CSS",
-                        Price = 120000,
-                        Duration = 200,
-                        Employees = new List<Employee> { },
-                        CompanyID = 1,
-                    },
-                    new Project
-                    {
-                        ProjectName = "Yemek Sitesi Fullstack Projesi",
-                        ProjectNo = 17282,
-                        Proficiencies = "C#,.NET,React,HTML/CSS",
-                        Price = 150000,
-                        Duration = 200,
-                        Employees = new List<Employee> { },
-                        CompanyID = 2,
-                    }
-                    );
-                _context.SaveChanges();
-            }
+            //    _context.Projects.AddRange(
+            //        new Project
+            //        {
+            //            ProjectName = "E-ticaret Sitesi Fullstack Projesi",
+            //            ProjectNo = 17283,
+            //            Proficiencies =  "C#,.NET,React,HTML/CSS",
+            //            Price = 120000,
+            //            Duration = 200,
+            //            Employees = new List<Employee> { },
+            //            CompanyID = 1,
+            //        },
+            //        new Project
+            //        {
+            //            ProjectName = "Yemek Sitesi Fullstack Projesi",
+            //            ProjectNo = 17282,
+            //            Proficiencies = "C#,.NET,React,HTML/CSS",
+            //            Price = 150000,
+            //            Duration = 200,
+            //            Employees = new List<Employee> { },
+            //            CompanyID = 2,
+            //        }
+            //        );
+            //    _context.SaveChanges();
+            //}
         }
 
 
 
-        public async Task<IActionResult> Index()
+        public async Task<ActionResult> Index()
         {
 
+            var companies = await _companyService.GetAllCompanies();
             var projects = await _projectService.GetAllProjects();
 
-            var companyName = await _context.Projects.Include(p => p.Company).ToListAsync();
+            if (!projects.Any())
+            {
+                return RedirectToAction(nameof(Create));
+            }
+
 
             return View(projects);
+
         }
 
         public ActionResult Create()
@@ -81,18 +89,25 @@ namespace Holding.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Project project)
+        public async Task<ActionResult> Create(Project project)
         {
-
             try
             {
+                var companies = await _companyService.GetAllCompanies();
                 _projectService.CreateProject(project);
+
+                if (project == null || project.CompanyID == null)
+                {
+                    return RedirectToAction(nameof(CompaniesController.Create));
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View(project);
+                return View("Error");
             }
+
+
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -143,18 +158,19 @@ namespace Holding.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id, Project project)
+        [ActionName(nameof(Delete))]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
 
             var deletedProject = await _projectService.GetProjectById(id);
 
-            if (deletedProject == null)
+            if (deletedProject == null || id == null)
             {
                 return NotFound();
             }
             try
             {
-                _projectService.RemoveProject(project);
+                _projectService.RemoveProject(deletedProject);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)

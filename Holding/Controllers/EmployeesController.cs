@@ -43,7 +43,7 @@ namespace Holding.Controllers
         // GET: EmployeesController
         public async Task<ActionResult> Index()
         {
-            var employees = await _context.Employees.Include(c => c.Company).Include(d => d.Department).ToListAsync();
+            var employees = await _context.Employees.Include(c => c.Company).ThenInclude(d => d.Projects).ToListAsync();
             return View(employees);
         }
 

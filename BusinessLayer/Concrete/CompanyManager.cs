@@ -22,7 +22,7 @@ namespace BusinessLayer.Concrete
             _companyRepository.Create(company);
         }
 
-        public async Task<List<Company>> GetAllCompanys() => await _companyRepository.List.ToListAsync();
+        public async Task<List<Company>> GetAllCompanies() => await _companyRepository.List.ToListAsync();
         public async Task<Company> GetCompanyById(int id) => await _companyRepository.List.FirstOrDefaultAsync(s => s.CompanyID == id);
         public void RemoveCompany(Company company)
         {

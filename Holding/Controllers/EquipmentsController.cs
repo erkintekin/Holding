@@ -71,7 +71,7 @@ namespace Holding.Controllers
 
             if (equipment == null)
             {
-                return NotFound("Lütfen geçerli bir ID giriniz");
+                return NotFound("Lütfen geçerli bir Ekipman seçiniz");
             }
             return View(equipment);
         }
@@ -97,17 +97,13 @@ namespace Holding.Controllers
 
         public async Task<ActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
             var equipment = await _equipmentService.GetEquipmentById(id);
 
-            if (equipment == null)
+            if (equipment == null || id == null)
             {
                 return NotFound();
             }
-
+      
             return View(equipment);
         }
 

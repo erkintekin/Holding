@@ -10,7 +10,7 @@ namespace BusinessLayer.Abstract
     public interface ICompanyService
     {
         void CreateCompany(Company company);
-        Task<List<Company>> GetAllCompanys();
+        Task<List<Company>> GetAllCompanies();
         Task<Company> GetCompanyById(int id);
         void UpdateCompany(Company company);
         void RemoveCompany(Company company);
