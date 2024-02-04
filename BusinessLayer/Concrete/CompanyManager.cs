@@ -12,30 +12,25 @@ namespace BusinessLayer.Concrete
 {
     public class CompanyManager : ICompanyService
     {
-        private readonly IRepository<Company> _CompanyRepository;
-        public CompanyManager(IRepository<Company> CompanyRepository)
+        private readonly IRepository<Company> _companyRepository;
+        public CompanyManager(IRepository<Company> companyRepository)
         {
-            _CompanyRepository = CompanyRepository;
+            _companyRepository = companyRepository;
         }
-        public void CreateCompany(Company Company)
+        public void CreateCompany(Company company)
         {
-            _CompanyRepository.Create(Company);
-        }
-
-        public Task<List<Company>> GetAllCompanies()
-        {
-            throw new NotImplementedException();
+            _companyRepository.Create(company);
         }
 
-        public async Task<List<Company>>? GetAllCompanys() => await _CompanyRepository.List.ToListAsync();
-        public async Task<Company>? GetCompanyById(int id) => await _CompanyRepository.List.FirstOrDefaultAsync(s => s.CompanyID == id);
-        public void RemoveCompany(Company Company)
+        public async Task<List<Company>> GetAllCompanies() => await _companyRepository.List.ToListAsync();
+        public async Task<Company> GetCompanyById(int id) => await _companyRepository.List.FirstOrDefaultAsync(s => s.CompanyID == id);
+        public void RemoveCompany(Company company)
         {
-            _CompanyRepository.Delete(Company);
+            _companyRepository.Delete(company);
         }
-        public void UpdateCompany(Company Company)
+        public void UpdateCompany(Company company)
         {
-            _CompanyRepository.Update(Company);
+            _companyRepository.Update(company);
         }
     }
 }

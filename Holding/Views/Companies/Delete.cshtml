@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Delete";
+}
+@model Company
+
+<p>
+    <strong>@Model.CompanyName</strong> isimli şirketi silmek istediğinizden emin misiniz?
+</p>
+<form asp-action="Delete" asp-controller="Companies" method="post">
+    <input type="hidden" asp-for="@Model.CompanyID">
+    <button type="submit" class="btn btn-danger">Evet</button>
+    <a asp-action="Index" asp-controller="Companies" class="btn btn-primary">Hayır</a>
+</form>

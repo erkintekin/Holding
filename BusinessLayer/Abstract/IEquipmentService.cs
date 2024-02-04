@@ -9,10 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface IEquipmentService
     {
-        void CreateEquipment(Equipment Equipment);
+        void CreateEquipment(Equipment equipment);
         Task<List<Equipment>> GetAllEquipments();
         Task<Equipment> GetEquipmentById(int id);
-        void UpdateEquipment(Equipment Equipment);
-        void RemoveEquipment(Equipment Equipment);
+        void UpdateEquipment(Equipment equipment);
+        void RemoveEquipment(Equipment equipment);
     }
 }

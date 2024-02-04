@@ -12,25 +12,25 @@ namespace BusinessLayer.Concrete
 {
     public class ProjectManager : IProjectService
     {
-        private readonly IRepository<Project> _ProjectRepository;
-        public ProjectManager(IRepository<Project> ProjectRepository)
+        private readonly IRepository<Project> _projectRepository;
+        public ProjectManager(IRepository<Project> projectRepository)
         {
-            _ProjectRepository = ProjectRepository;
+            _projectRepository = projectRepository;
         }
-        public void CreateProject(Project Project)
+        public void CreateProject(Project project)
         {
-            _ProjectRepository.Create(Project);
+            _projectRepository.Create(project);
         }
 
-        public async Task<List<Project>>? GetAllProjects() => await _ProjectRepository.List.ToListAsync();
-        public async Task<Project>? GetProjectById(int id) => await _ProjectRepository.List.FirstOrDefaultAsync(s => s.ProjectID == id);
-        public void RemoveProject(Project Project)
+        public async Task<List<Project>> GetAllProjects() => await _projectRepository.List.ToListAsync();
+        public async Task<Project> GetProjectById(int id) => await _projectRepository.List.FirstOrDefaultAsync(s => s.ProjectID == id);
+        public void RemoveProject(Project project)
         {
-            _ProjectRepository.Delete(Project);
+            _projectRepository.Delete(project);
         }
-        public void UpdateProject(Project Project)
+        public void UpdateProject(Project project)
         {
-            _ProjectRepository.Update(Project);
+            _projectRepository.Update(project);
         }
     }
 }

@@ -9,10 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface IProjectService
     {
-        void CreateProject(Project Project);
+        void CreateProject(Project project);
         Task<List<Project>> GetAllProjects();
         Task<Project> GetProjectById(int id);
-        void UpdateProject(Project Project);
-        void RemoveProject(Project Project);
+        void UpdateProject(Project project);
+        void RemoveProject(Project project);
     }
 }

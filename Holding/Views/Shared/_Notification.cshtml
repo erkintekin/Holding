@@ -1,0 +1,12 @@
+﻿@if (TempData["status"] != null)
+{
+    <script>
+        toastr.success("@TempData["status"]");
+    </script>
+}
+@if (TempData["status"] == null)
+{
+    <script>
+        toastr.error("@TempData["status"]");
+    </script>
+}

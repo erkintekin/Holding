@@ -9,10 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface IDepartmentService
     {
-        void CreateDepartment(Department Department);
+        void CreateDepartment(Department department);
         Task<List<Department>> GetAllDepartments();
         Task<Department> GetDepartmentById(int id);
-        void UpdateDepartment(Department Department);
-        void RemoveDepartment(Department Department);
+        void UpdateDepartment(Department department);
+        void RemoveDepartment(Department department);
     }
 }

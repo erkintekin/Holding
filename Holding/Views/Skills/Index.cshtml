@@ -1,7 +1,15 @@
-﻿﻿@{
+﻿@{
     ViewData["Title"] = "Index";
 }
 @model IEnumerable<Skill>
+@if (TempData["status"] != null)
+{
+    @section Scripts {
+    <script>
+        toastr.success("@TempData["status"]");
+        </script>
+    }
+}
 <h1>Skill Listesi</h1>
 <a class="btn btn-outline-primary" asp-controller="Skills" asp-action="Create">Beceri Ekle</a>
 <table class="table table-hover table-dark table-striped table-bordered">

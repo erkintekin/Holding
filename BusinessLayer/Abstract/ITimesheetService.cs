@@ -9,10 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface ITimesheetService
     {
-        void CreateTimeSheet(Timesheet TimeSheet);
-        Task<List<Timesheet>> GetAllTimeSheets();
-        Task<Timesheet> GetTimeSheetById(int id);
-        void UpdateTimeSheet(Timesheet TimeSheet);
-        void RemoveTimeSheet(Timesheet TimeSheet);
+        void CreateTimesheet(Timesheet timesheet);
+        Task<List<Timesheet>> GetAllTimesheets();
+        Task<Timesheet> GetTimesheetById(int id);
+        void UpdateTimesheet(Timesheet timesheet);
+        void RemoveTimesheet(Timesheet timesheet);
     }
 }

@@ -12,26 +12,25 @@ namespace BusinessLayer.Concrete
 {
     public class TimesheetManager : ITimesheetService
     {
-        private readonly IRepository<Timesheet> _TimeSheetRepository;
-        public TimesheetManager(IRepository<Timesheet> TimeSheetRepository)
+        private readonly IRepository<Timesheet> _timesheetRepository;
+        public TimesheetManager(IRepository<Timesheet> timesheetRepository)
         {
-            _TimeSheetRepository = TimeSheetRepository;
+            _timesheetRepository = timesheetRepository;
         }
-        public void CreateTimeSheet(Timesheet TimeSheet)
+        public void CreateTimesheet(Timesheet timesheet)
         {
-            _TimeSheetRepository.Create(TimeSheet);
+            _timesheetRepository.Create(timesheet);
         }
 
-        public async Task<List<Timesheet>>? GetAllTimeSheets() => await _TimeSheetRepository.List.ToListAsync();
-        public async Task<Timesheet>? GetTimeSheetById(int id) => await _TimeSheetRepository.List.FirstOrDefaultAsync(s => s.TimesheetID == id);
-        public void RemoveTimeSheet(Timesheet TimeSheet)
+        public async Task<List<Timesheet>> GetAllTimesheets() => await _timesheetRepository.List.ToListAsync();
+        public async Task<Timesheet> GetTimesheetById(int id) => await _timesheetRepository.List.FirstOrDefaultAsync(s => s.TimesheetID == id);
+        public void RemoveTimesheet(Timesheet timesheet)
         {
-            _TimeSheetRepository.Delete(TimeSheet);
+            _timesheetRepository.Delete(timesheet);
         }
-        public void UpdateTimeSheet(Timesheet TimeSheet)
+        public void UpdateTimesheet(Timesheet timesheet)
         {
-            _TimeSheetRepository.Update(TimeSheet);
-
+            _timesheetRepository.Update(timesheet);
         }
     }
 }

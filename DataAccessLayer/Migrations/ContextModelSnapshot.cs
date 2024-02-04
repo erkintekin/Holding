@@ -39,11 +39,11 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Company", b =>
                 {
-                    b.Property<int?>("CompanyID")
+                    b.Property<int>("CompanyID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("CompanyID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CompanyID"));
 
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
@@ -80,8 +80,8 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("DepartmentInfo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DepartmentName")
-                        .HasColumnType("int");
+                    b.Property<string>("DepartmentName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("HeadCount")
                         .HasColumnType("int");

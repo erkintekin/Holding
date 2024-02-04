@@ -9,10 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface ICompanyService
     {
-        void CreateCompany(Company Company);
+        void CreateCompany(Company company);
         Task<List<Company>> GetAllCompanies();
         Task<Company> GetCompanyById(int id);
-        void UpdateCompany(Company Company);
-        void RemoveCompany(Company Company);
+        void UpdateCompany(Company company);
+        void RemoveCompany(Company company);
     }
 }

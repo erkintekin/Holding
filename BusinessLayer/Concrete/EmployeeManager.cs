@@ -12,25 +12,25 @@ namespace BusinessLayer.Concrete
 {
     public class EmployeeManager : IEmployeeService
     {
-        private readonly IRepository<Employee> _EmployeeRepository;
-        public EmployeeManager(IRepository<Employee> EmployeeRepository)
+        private readonly IRepository<Employee> _employeeRepository;
+        public EmployeeManager(IRepository<Employee> employeeRepository)
         {
-            _EmployeeRepository = EmployeeRepository;
+            _employeeRepository = employeeRepository;
         }
-        public void CreateEmployee(Employee Employee)
+        public void CreateEmployee(Employee employee)
         {
-            _EmployeeRepository.Create(Employee);
+            _employeeRepository.Create(employee);
         }
 
-        public async Task<List<Employee>>? GetAllEmployees() => await _EmployeeRepository.List.ToListAsync();
-        public async Task<Employee>? GetEmployeeById(int id) => await _EmployeeRepository.List.FirstOrDefaultAsync(s => s.EmployeeID == id);
-        public void RemoveEmployee(Employee Employee)
+        public async Task<List<Employee>> GetAllEmployees() => await _employeeRepository.List.ToListAsync();
+        public async Task<Employee> GetEmployeeById(int id) => await _employeeRepository.List.FirstOrDefaultAsync(s => s.EmployeeID == id);
+        public void RemoveEmployee(Employee employee)
         {
-            _EmployeeRepository.Delete(Employee);
+            _employeeRepository.Delete(employee);
         }
-        public void UpdateEmployee(Employee Employee)
+        public void UpdateEmployee(Employee employee)
         {
-            _EmployeeRepository.Update(Employee);
+            _employeeRepository.Update(employee);
         }
     }
 }

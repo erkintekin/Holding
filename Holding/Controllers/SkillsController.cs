@@ -26,24 +26,26 @@ namespace Holding.Controllers
             }
         }
 
+        // GET: SkillsController
         public async Task<ActionResult> Index()
         {
             var skills = await _skillService.GetAllSkills();
             return View(skills);
         }
 
+        // GET: SkillsController/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
 
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
-
-   
+        // GET: SkillsController/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        // POST: SkillsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Skill skill)
@@ -51,6 +53,7 @@ namespace Holding.Controllers
             try
             {
                 _skillService.CreateSkill(skill);
+                TempData["status"] = "Yeni beceri başarılı şekilde eklendi!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -59,7 +62,7 @@ namespace Holding.Controllers
             }
         }
 
- 
+        // GET: SkillsController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
             var skill = await _skillService.GetSkillById(id);
@@ -70,9 +73,10 @@ namespace Holding.Controllers
             return View(skill);
         }
 
+        // POST: SkillsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Skill skill)
+        public async Task<ActionResult> Edit(int id, Skill skill)
         {
             if (id != skill.SkillID)
             {
@@ -81,6 +85,7 @@ namespace Holding.Controllers
             try
             {
                 _skillService.UpdateSkill(skill);
+                TempData["status"] = "Beceri başarılı bir şekilde güncellendi.";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -89,6 +94,7 @@ namespace Holding.Controllers
             }
         }
 
+        // GET: SkillsController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
             if (id == null)
@@ -103,32 +109,29 @@ namespace Holding.Controllers
             return View(skill);
         }
 
-
+        // POST: SkillsController/Delete/5
         [HttpPost]
-        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id, Skill skill)
+        [ActionName(nameof(Delete))]
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            if (id != skill.SkillID)
-            {
-                return NotFound();
-            }
             try
             {
+
+                //deneme
                 var deleteSkill = await _skillService.GetSkillById(id);
                 if (deleteSkill == null)
                 {
                     return NotFound();
                 }
                 _skillService.RemoveSkill(deleteSkill);
+                TempData["status"] = "Beceri başarılı bir şekilde silindi.";
                 return RedirectToAction(nameof(Index));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return NotFound(ex);
-
+                throw new Exception("Silme işlemi başarısız!" + ex);
             }
-           
         }
     }
 }

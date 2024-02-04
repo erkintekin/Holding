@@ -9,11 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface IPayrollService
     {
-        void CreatePayroll(Payroll Payroll);
+        void CreatePayroll(Payroll payroll);
         Task<List<Payroll>> GetAllPayrolls();
         Task<Payroll> GetPayrollById(int id);
-        void UpdatePayroll(Payroll Payroll);
-        void RemovePayroll(Payroll Payroll);
-
+        void UpdatePayroll(Payroll payroll);
+        void RemovePayroll(Payroll payroll);
     }
 }

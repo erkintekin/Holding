@@ -9,12 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface ICustomerService
     {
-
-        void CreateCustomer(Customer Customer);
+        void CreateCustomer(Customer customer);
         Task<List<Customer>> GetAllCustomers();
         Task<Customer> GetCustomerById(int id);
-        void UpdateCustomer(Customer Customer);
-        void RemoveCustomer(Customer Customer);
-
+        void UpdateCustomer(Customer customer);
+        void RemoveCustomer(Customer customer);
     }
 }

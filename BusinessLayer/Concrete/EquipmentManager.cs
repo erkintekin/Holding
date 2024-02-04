@@ -12,28 +12,25 @@ namespace BusinessLayer.Concrete
 {
     public class EquipmentManager : IEquipmentService
     {
-        private readonly IRepository<Equipment> _EquipmentRepository;
-        public EquipmentManager(IRepository<Equipment> EquipmentRepository)
+        private readonly IRepository<Equipment> _equipmentRepository;
+        public EquipmentManager(IRepository<Equipment> equipmentRepository)
         {
-            _EquipmentRepository = EquipmentRepository;
+            _equipmentRepository = equipmentRepository;
         }
-        public void CreateEquipment(Equipment Equipment)
+        public void CreateEquipment(Equipment equipment)
         {
-            _EquipmentRepository.Create(Equipment);
+            _equipmentRepository.Create(equipment);
         }
 
-        public async Task<List<Equipment>>? GetAllEquipments() => await _EquipmentRepository.List.ToListAsync();
-
-        public async Task<Equipment>? GetEquipmentById(int id) => await _EquipmentRepository.List.FirstOrDefaultAsync(s => s.EquipmentID == id);
-
-        public void RemoveEquipment(Equipment Equipment)
+        public async Task<List<Equipment>> GetAllEquipments() => await _equipmentRepository.List.ToListAsync();
+        public async Task<Equipment> GetEquipmentById(int id) => await _equipmentRepository.List.FirstOrDefaultAsync(s => s.EquipmentID == id);
+        public void RemoveEquipment(Equipment equipment)
         {
-            _EquipmentRepository.Delete(Equipment);
+            _equipmentRepository.Delete(equipment);
         }
-        public void UpdateEquipment(Equipment Equipment)
+        public void UpdateEquipment(Equipment equipment)
         {
-            _EquipmentRepository.Update(Equipment);
-
+            _equipmentRepository.Update(equipment);
         }
     }
 }

@@ -1,0 +1,85 @@
+﻿@model EntityLayer.Concrete.Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Employee</h4>
+<hr />
+<form asp-action="Create" method="post">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="TCKN" class="control-label"></label>
+                <input asp-for="TCKN" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="RegNo" class="control-label"></label>
+                <input asp-for="RegNo" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Mail" class="control-label"></label>
+                <input asp-for="Mail" class="form-control" />
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Wage" class="control-label"></label>
+                <input asp-for="Wage" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label"></label>
+                <input asp-for="Birthday" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentID" class="control-label"></label>
+                <input asp-for="DepartmentID" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyID" class="control-label"></label>
+                <input asp-for="CompanyID" class="form-control" />
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

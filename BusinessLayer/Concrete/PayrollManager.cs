@@ -12,25 +12,25 @@ namespace BusinessLayer.Concrete
 {
     public class PayrollManager : IPayrollService
     {
-        private readonly IRepository<Payroll> _PayrollRepository;
-        public PayrollManager(IRepository<Payroll> PayrollRepository)
+        private readonly IRepository<Payroll> _payrollRepository;
+        public PayrollManager(IRepository<Payroll> payrollRepository)
         {
-            _PayrollRepository = PayrollRepository;
+            _payrollRepository = payrollRepository;
         }
-        public void CreatePayroll(Payroll Payroll)
+        public void CreatePayroll(Payroll payroll)
         {
-            _PayrollRepository.Create(Payroll);
+            _payrollRepository.Create(payroll);
         }
 
-        public async Task<List<Payroll>>? GetAllPayrolls() => await _PayrollRepository.List.ToListAsync();
-        public async Task<Payroll>? GetPayrollById(int id) => await _PayrollRepository.List.FirstOrDefaultAsync(s => s.PayrollID == id);
-        public void RemovePayroll(Payroll Payroll)
+        public async Task<List<Payroll>> GetAllPayrolls() => await _payrollRepository.List.ToListAsync();
+        public async Task<Payroll> GetPayrollById(int id) => await _payrollRepository.List.FirstOrDefaultAsync(s => s.PayrollID == id);
+        public void RemovePayroll(Payroll payroll)
         {
-            _PayrollRepository.Delete(Payroll);
+            _payrollRepository.Delete(payroll);
         }
-        public void UpdatePayroll(Payroll Payroll)
+        public void UpdatePayroll(Payroll payroll)
         {
-            _PayrollRepository.Update(Payroll);
+            _payrollRepository.Update(payroll);
         }
     }
 }

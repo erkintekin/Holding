@@ -20,9 +20,9 @@ namespace Holding.Controllers
             if (!_context.Equipments.Any())
             {
                 _context.Equipments.AddRange(
-                    new Equipment {EquipmentName = "Lenovo Laptop" },
-                    new Equipment {EquipmentName = "Mouse" },
-                    new Equipment {EquipmentName = "Laptop Case" }
+                    new Equipment { EquipmentName = "Lenovo Laptop" },
+                    new Equipment { EquipmentName = "Mouse" },
+                    new Equipment { EquipmentName = "Laptop Case" }
                     );
                 _context.SaveChanges();
             }
@@ -56,6 +56,7 @@ namespace Holding.Controllers
             try
             {
                 _equipmentService.CreateEquipment(equipment);
+                TempData["status"] = "Yeni ekipman başarılı şekilde eklendi!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -71,7 +72,7 @@ namespace Holding.Controllers
 
             if (equipment == null)
             {
-                return NotFound("Lütfen geçerli bir ID giriniz");
+                return NotFound("Lütfen geçerli bir Ekipman seçiniz");
             }
             return View(equipment);
         }
@@ -87,6 +88,8 @@ namespace Holding.Controllers
             try
             {
                 _equipmentService.UpdateEquipment(equipment);
+                TempData["status"] = "Ekipman başarılı şekilde güncellendi!";
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -97,25 +100,21 @@ namespace Holding.Controllers
 
         public async Task<ActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
             var equipment = await _equipmentService.GetEquipmentById(id);
 
-            if (equipment == null)
+            if (equipment == null || id == null)
             {
                 return NotFound();
             }
-
+      
             return View(equipment);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id, Equipment equipment)
+        [ActionName(nameof(Delete))]
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-
             try
             {
                 var deleteEquipment = await _equipmentService.GetEquipmentById(id);
@@ -123,15 +122,16 @@ namespace Holding.Controllers
                 {
                     return NotFound();
                 }
-
                 _equipmentService.RemoveEquipment(deleteEquipment);
+                TempData["status"] = "Ekipman başarılı şekilde silindi!";
+
                 return RedirectToAction(nameof(Index));
 
             }
             catch (Exception ex)
             {
                 {
-                    return NotFound(ex);
+                    return BadRequest(ex);
                 }
             }
         }

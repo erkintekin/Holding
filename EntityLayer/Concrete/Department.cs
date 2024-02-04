@@ -11,7 +11,7 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int? DepartmentID { get; set; } // Departman ID'si  
-        public int? DepartmentName { get; set; }  // Departman adı  
+        public string? DepartmentName { get; set; }  // Departman adı  
         public int? HeadCount { get; set; }   // Toplam işçi sayısı
         public int? Quota { get; set; }       // Toplam kontenjan
         public string? DepartmentInfo { get; set; }   // Departman açıklaması

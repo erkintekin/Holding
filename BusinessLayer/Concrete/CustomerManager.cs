@@ -12,25 +12,25 @@ namespace BusinessLayer.Concrete
 {
     public class CustomerManager : ICustomerService
     {
-        private readonly IRepository<Customer> _CustomerRepository;
-        public CustomerManager(IRepository<Customer> CustomerRepository)
+        private readonly IRepository<Customer> _customerRepository;
+        public CustomerManager(IRepository<Customer> customerRepository)
         {
-            _CustomerRepository = CustomerRepository;
+            _customerRepository = customerRepository;
         }
-        public void CreateCustomer(Customer Customer)
+        public void CreateCustomer(Customer customer)
         {
-            _CustomerRepository.Create(Customer);
+            _customerRepository.Create(customer);
         }
 
-        public async Task<List<Customer>>? GetAllCustomers() => await _CustomerRepository.List.ToListAsync();
-        public async Task<Customer>? GetCustomerById(int id) => await _CustomerRepository.List.FirstOrDefaultAsync(s => s.CustomerID == id);
-        public void RemoveCustomer(Customer Customer)
+        public async Task<List<Customer>> GetAllCustomers() => await _customerRepository.List.ToListAsync();
+        public async Task<Customer> GetCustomerById(int id) => await _customerRepository.List.FirstOrDefaultAsync(s => s.CustomerID == id);
+        public void RemoveCustomer(Customer customer)
         {
-            _CustomerRepository.Delete(Customer);
+            _customerRepository.Delete(customer);
         }
-        public void UpdateCustomer(Customer Customer)
+        public void UpdateCustomer(Customer customer)
         {
-            _CustomerRepository.Update(Customer);
+            _customerRepository.Update(customer);
         }
     }
 }
