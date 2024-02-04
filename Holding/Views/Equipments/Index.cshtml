@@ -2,7 +2,14 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@if (TempData["status"] != null)
+{
+    @section Scripts {
+    <script>
+        toastr.success("@TempData["status"]");
+        </script>
+    }
+}
 <h1>Ekipman Listesi</h1>
 
 <table class="table table-hover table-dark table-striped table-bordered my-5">

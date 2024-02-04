@@ -33,6 +33,5 @@ namespace EntityLayer.Concrete
         //public Skill? Skill { get; set; }
         //public int? PayrollID { get; set; }
         //public Payroll? Payroll { get; set; }
-
     }
 }
