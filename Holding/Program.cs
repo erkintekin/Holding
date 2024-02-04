@@ -19,6 +19,8 @@ builder.Services.AddScoped<ISkillService, SkillManager>();
 builder.Services.AddScoped<IRepository<Skill>, GenericRepository<Skill>>();
 builder.Services.AddScoped<IEquipmentService, EquipmentManager>();
 builder.Services.AddScoped<IRepository<Equipment>, GenericRepository<Equipment>>();
+builder.Services.AddScoped<IProjectService, ProjectManager>();
+builder.Services.AddScoped<IRepository<Project>, GenericRepository<Project>>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Department>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@if (TempData["status"] != null)
+{
+    @section Scripts {
+    <script>
+        toastr.success("@TempData["status"]");
+        </script>
+    }
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
+</p>
+<table class="table table-hover table-dark table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentInfo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeadCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentInfo)
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a asp-action="Edit" asp-route-id="@item.DepartmentID" class="btn btn-sm btn-primary">
+                            Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.DepartmentID" class="btn btn-sm btn-danger">Sil</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

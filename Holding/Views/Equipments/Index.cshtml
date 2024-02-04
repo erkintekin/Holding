@@ -26,14 +26,44 @@
                     @item.EquipmentName
                 </td>
                 <td>
-                    <div class="btn-group">
-                        <a class="btn btn-sm btn-primary mx-3" asp-controller="Equipments" asp-action="Edit" asp-route-id="@item.EquipmentID">Edit</a>
-                        <a class="btn btn-sm  btn-danger" asp-controller="Equipments" asp-action="Delete" asp-route-id="@item.EquipmentID">Delete</a>
-                    </div>
+                    <form asp-controller="Equipments" asp-action="Delete" method="post" onsubmit="displayAlert(event)">
+                        <input type="hidden" asp-for="@item.EquipmentID" />
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                        </div>
+                    </form>
                 </td>
             </tr>
         }
     </tbody>
 
 </table>
+@section Scripts {
+    <script>
+        function displayAlert(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.target.submit();
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                }
+            });
+        }
 
+        function deleteConfirmation(button) {
+            button.closest('form').submit();
+        }
+    </script>
+}

@@ -20,9 +20,9 @@ namespace Holding.Controllers
             if (!_context.Equipments.Any())
             {
                 _context.Equipments.AddRange(
-                    new Equipment {EquipmentName = "Lenovo Laptop" },
-                    new Equipment {EquipmentName = "Mouse" },
-                    new Equipment {EquipmentName = "Laptop Case" }
+                    new Equipment { EquipmentName = "Lenovo Laptop" },
+                    new Equipment { EquipmentName = "Mouse" },
+                    new Equipment { EquipmentName = "Laptop Case" }
                     );
                 _context.SaveChanges();
             }
@@ -113,9 +113,9 @@ namespace Holding.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id, Equipment equipment)
+        [ActionName(nameof(Delete))]
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-
             try
             {
                 var deleteEquipment = await _equipmentService.GetEquipmentById(id);
@@ -123,7 +123,6 @@ namespace Holding.Controllers
                 {
                     return NotFound();
                 }
-
                 _equipmentService.RemoveEquipment(deleteEquipment);
                 return RedirectToAction(nameof(Index));
 
@@ -131,7 +130,7 @@ namespace Holding.Controllers
             catch (Exception ex)
             {
                 {
-                    return NotFound(ex);
+                    return BadRequest(ex);
                 }
             }
         }
