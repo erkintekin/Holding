@@ -21,6 +21,10 @@ builder.Services.AddScoped<IEquipmentService, EquipmentManager>();
 builder.Services.AddScoped<IRepository<Equipment>, GenericRepository<Equipment>>();
 builder.Services.AddScoped<IProjectService, ProjectManager>();
 builder.Services.AddScoped<IRepository<Project>, GenericRepository<Project>>();
+builder.Services.AddScoped<IEmployeeService, EmployeeManager>();
+builder.Services.AddScoped<IRepository<Employee>, GenericRepository<Employee>>();
+builder.Services.AddScoped<IDepartmentService, DepartmentManager>();
+builder.Services.AddScoped<IRepository<Department>, GenericRepository<Department>>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
