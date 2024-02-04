@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240131195709_InitMig")]
-    partial class InitMig
+    [Migration("20240204160536_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,8 +83,8 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("DepartmentInfo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DepartmentName")
-                        .HasColumnType("int");
+                    b.Property<string>("DepartmentName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("HeadCount")
                         .HasColumnType("int");

@@ -80,8 +80,8 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("DepartmentInfo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DepartmentName")
-                        .HasColumnType("int");
+                    b.Property<string>("DepartmentName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("HeadCount")
                         .HasColumnType("int");

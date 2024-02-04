@@ -17,8 +17,11 @@ builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.C
 
 builder.Services.AddScoped<ISkillService, SkillManager>();
 builder.Services.AddScoped<IRepository<Skill>, GenericRepository<Skill>>();
+builder.Services.AddScoped<IDepartmentService, DepartmentManager>();
+builder.Services.AddScoped<IRepository<Department>, GenericRepository<Department>>();
 builder.Services.AddScoped<IEquipmentService, EquipmentManager>();
 builder.Services.AddScoped<IRepository<Equipment>, GenericRepository<Equipment>>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
