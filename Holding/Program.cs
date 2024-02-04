@@ -1,5 +1,6 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using CurrieTechnologies.Razor.SweetAlert2;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.Repositories;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSweetAlert2();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -17,7 +19,6 @@ builder.Services.AddScoped<ISkillService, SkillManager>();
 builder.Services.AddScoped<IRepository<Skill>, GenericRepository<Skill>>();
 builder.Services.AddScoped<IEquipmentService, EquipmentManager>();
 builder.Services.AddScoped<IRepository<Equipment>, GenericRepository<Equipment>>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

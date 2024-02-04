@@ -1,3 +1,4 @@
+@inject SweetAlertService Swal;
 
 ﻿@{
 
@@ -17,4 +18,27 @@
     <button type="submit" class="btn btn-danger">Evet</button>
 
     <a asp-action="Index" asp-controller="Equipments" class="btn btn-primary">Hayır</a>
+
 </form>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('form').submit(function (e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Emin misiniz?',
+                    text: '@Model.EquipmentName isimli ekipmanı silmek istediğinizden emin misiniz?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Evet, sil!',
+                    cancelButtonText: 'Hayır, silmiyorum'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.submit(); // Kullanıcı onaylarsa formu gönder
+                    }
+                });
+            });
+        });
+    </script>
+}
