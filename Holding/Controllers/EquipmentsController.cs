@@ -56,6 +56,7 @@ namespace Holding.Controllers
             try
             {
                 _equipmentService.CreateEquipment(equipment);
+                TempData["status"] = "Yeni ekipman başarılı şekilde eklendi!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -87,6 +88,8 @@ namespace Holding.Controllers
             try
             {
                 _equipmentService.UpdateEquipment(equipment);
+                TempData["status"] = "Ekipman başarılı şekilde güncellendi!";
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -124,6 +127,8 @@ namespace Holding.Controllers
                     return NotFound();
                 }
                 _equipmentService.RemoveEquipment(deleteEquipment);
+                TempData["status"] = "Ekipman başarılı şekilde silindi!";
+
                 return RedirectToAction(nameof(Index));
 
             }

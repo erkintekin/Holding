@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@if (TempData["status"] != null)
+{
+    @section Scripts {
+    <script>
+        toastr.success("@TempData["status"]");
+        </script>
+    }
+}
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a asp-action="Edit" asp-route-id="@item.CustomerID" class="btn btn-sm btn-primary">
+                            Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.CustomerID" class="btn btn-sm btn-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

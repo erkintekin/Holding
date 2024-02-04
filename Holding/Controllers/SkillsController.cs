@@ -76,7 +76,7 @@ namespace Holding.Controllers
         // POST: SkillsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Skill skill)
+        public async Task<ActionResult> Edit(int id, Skill skill)
         {
             if (id != skill.SkillID)
             {

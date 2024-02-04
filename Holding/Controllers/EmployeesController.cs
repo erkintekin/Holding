@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using DataAccessLayer.Abstract;
 
 namespace Holding.Controllers
 {
@@ -11,12 +12,13 @@ namespace Holding.Controllers
     {
         private readonly Context _context;
         private readonly IEmployeeService _employeeService;
+        private readonly IRepository<Employee> _employeeRepo;
 
-        public EmployeesController(Context context, IEmployeeService employeeService)
+        public EmployeesController(Context context, IEmployeeService employeeService, IRepository<Employee> employeeRepo)
         {
             _context = context;
             _employeeService = employeeService;
-
+            _employeeRepo = employeeRepo;
             if (!_context.Companies.Any())
             {
                 _context.Companies.AddRange(
@@ -41,9 +43,11 @@ namespace Holding.Controllers
             }
         }
         // GET: EmployeesController
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var employees = await _context.Employees.Include(c => c.Company).Include(d => d.Department).ToListAsync();
+            var employees = _employeeRepo.List.Include(c => c.Company).Include(d => d.Department).ToList();
+            //var employees = await _context.Employees.Include(c => c.Company).ThenInclude(d => d.Projects).ToListAsync();
+            //var employees = await _employeeService.GetAllEmployees();
             return View(employees);
         }
 
@@ -62,31 +66,44 @@ namespace Holding.Controllers
         // POST: EmployeesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Employee employee)
         {
             try
             {
+                _employeeService.CreateEmployee(employee);
+                TempData["status"] = "Yeni çalışan başarılı şekilde eklendi!";
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(employee);
             }
         }
 
         // GET: EmployeesController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var employee = await _employeeService.GetEmployeeById(id);
+            if (employee == null)
+            {
+                return NotFound("Çalışan id si bulunamadı");
+            }
+            return View(employee);
         }
 
         // POST: EmployeesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Employee employee)
         {
+            if (id != employee.EmployeeID)
+            {
+                return NotFound("id bulunamadı");
+            }
             try
             {
+                _employeeService.UpdateEmployee(employee);
+                TempData["status"] = "Çalışan başarılı şekilde güncellendi!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -96,18 +113,31 @@ namespace Holding.Controllers
         }
 
         // GET: EmployeesController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound("id bulunamadı");
+            }
+            var employee = await _employeeService.GetEmployeeById(id);
+            return View(employee);
         }
 
         // POST: EmployeesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [ActionName(nameof(Delete))]
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             try
             {
+                var employee = await _employeeService.GetEmployeeById(id);
+                if (employee == null)
+                {
+                    return NotFound();
+                }
+                _employeeService.RemoveEmployee(employee);
+                TempData["status"] = "Çalışan başarılı şekilde silindi!";
                 return RedirectToAction(nameof(Index));
             }
             catch

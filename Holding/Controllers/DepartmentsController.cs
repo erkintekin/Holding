@@ -85,7 +85,7 @@ namespace Holding.Controllers
             try
             {
                 _departmentService.UpdateDepartment(department);
-                TempData["status"] = "Yeni departman başarılı şekilde güncellendi!";
+                TempData["status"] = "Departman başarılı şekilde güncellendi!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -122,7 +122,7 @@ namespace Holding.Controllers
                     return NotFound();
                 }
                 _departmentService.RemoveDepartment(deleteDepartment);
-                TempData["status"] = "Yeni departman başarılı şekilde silindi!";
+                TempData["status"] = "Departman başarılı şekilde silindi!";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
