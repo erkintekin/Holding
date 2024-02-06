@@ -65,6 +65,10 @@ namespace Holding.Controllers
         // GET: DepartmentsController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
             var department = await _departmentService.GetDepartmentById(id);
             if (department == null)
             {
