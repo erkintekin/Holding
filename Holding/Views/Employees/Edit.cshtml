@@ -65,11 +65,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="DepartmentID" class="control-label"></label>
-                <input asp-for="DepartmentID" class="form-control" />
+                <select asp-for="DepartmentID" asp-items="ViewBag.DepartmentSelect" class="form-select">
+                    <option disabled selected value="">Seçiniz</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="CompanyID" class="control-label"></label>
-                <input asp-for="CompanyID" class="form-control" />
+                <select asp-for="CompanyID" asp-items="ViewBag.CompaniesSelect" class="form-select">
+                    <option disabled selected value="">Seçiniz</option>
+                </select>
             </div>
             <div class="form-group">
             </div>
