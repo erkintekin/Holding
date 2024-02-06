@@ -16,8 +16,13 @@ namespace EntityLayer.Concrete
         public double? Price { get; set; }  // Proje tutarı
         public int? Duration { get; set; }  // Proje süresi - Çalışanın timesheet'ine atanmalı
         public string? Proficiencies { get; set; }  // Projenin istediği yeterlilikler
-        public ICollection<Employee>? Employees { get; set; }  // Bir projede 1'den fazla çalışan olabilir.
-        public int CompanyID { get; set; }  // Bir proje sadece 1 şirkete ait olabilir (her iştirak farklı konseptte olmalı)
-        public Company? Company { get; set; }
+        public int CustomerID { get; set; }
+        public Customer? Customer { get; set; }
+        public ICollection<ProjectSkill>? ProjectSkills { get; set; } // Ara tablo
+        public ICollection<CompanyProject>? CompanyProjects { get; set; } // Ara tablo
+        public ICollection<EmployeeProject>? EmployeeProjects { get; set; } // Ara tablo
+
+
+
     }
 }

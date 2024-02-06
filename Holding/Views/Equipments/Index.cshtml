@@ -31,7 +31,7 @@
                 </td>
                 <td>
                     @item.EquipmentName
-                </td>
+                </td> 
                 <td>
                     <form asp-controller="Equipments" asp-action="Delete" method="post" onsubmit="displayAlert(event)">
                         <input type="hidden" asp-for="@item.EquipmentID" />

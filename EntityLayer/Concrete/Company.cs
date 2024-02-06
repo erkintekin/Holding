@@ -12,6 +12,10 @@ namespace EntityLayer.Concrete
         [Key]
         public int CompanyID { get; set; }  // Şirket-İştirak ID'si  
         public string? CompanyName { get; set; }  // Şirket-İştirak adı 
-        public ICollection<Project>? Projects { get; set; }  // 1 şirkette birden fazla proje olabilir
+        public ICollection<CompanyProject>? CompanyProjects { get; set; } // Ara tablo
+        public ICollection<Employee>? Employees { get; set; }
+        public ICollection<CompanyDepartment>? CompanyDepartments { get; set; } // Ara tablo
+        public ICollection<CompanyCustomer>? CompanyCustomers { get; set; }
+
     }
 }

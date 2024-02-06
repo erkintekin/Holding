@@ -22,10 +22,11 @@ namespace EntityLayer.Concrete
         public Department? Department { get; set; }
         public int? CompanyID { get; set; }  // Çalışana ait şirket-iştirak numarası - Unique
         public Company? Company { get; set; }
-        public ICollection<Project>? Projects { get; set; } // Bir çalışan 1'den fazla projede çalışabilir
-        public ICollection<Skill>? Skills { get; set; }  // Bir çalışanın 1'den fazla yeteneği olabilir
+        public ICollection<EmployeeProject>? EmployeeProjects { get; set; } // Ara tablo
+        public ICollection<EmployeeSkill>? EmployeeSkills { get; set; } // Employee ve Skill arasındaki ilişkiyi temsil eden ara tablo
         public ICollection<Payroll>? Payrolls { get; set; } // Bir çalışanın 1'den fazla bordrosu olabilir (1 aydan eski çalışan ise)
         public ICollection<Timesheet>? Timesheets { get; set; } // Bir çalışanın 1'den fazla zaman çizelgesi olabilir (1 haftadan eski çalışan ise)
+        public ICollection<EmployeeEquipment>? EmployeeEquipments { get; set; } // Ara tablo
 
         //public int ProjectID { get; set; } 
         //public Project Project { get; set; }

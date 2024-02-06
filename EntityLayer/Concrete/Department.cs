@@ -14,7 +14,9 @@ namespace EntityLayer.Concrete
         public string? DepartmentName { get; set; }  // Departman adı  
         public int? HeadCount { get; set; }   // Toplam işçi sayısı
         public int? Quota { get; set; }       // Toplam kontenjan
-        public string? DepartmentInfo { get; set; }   // Departman açıklaması
         public ICollection<Employee>? Employees { get; set; }
+        public ICollection<CompanyDepartment>? CompanyDepartments { get; set; } // Ara tablo
+
+        //public string? DepartmentInfo { get; set; }   // Departman açıklaması
     }
 }

@@ -19,9 +19,9 @@ namespace Holding.Controllers
             if (!_context.Departments.Any())
             {
                 _context.Departments.AddRange(
-                    new Department() { DepartmentName = "İnsan Kaynakları", DepartmentInfo = "falan filan departmanı filan açıklaması işte.", HeadCount = 100, Quota = 150, Employees = new List<Employee>() },
-                    new Department() { DepartmentName = "Falan Departman", DepartmentInfo = "falan filan departmanı filan açıklaması işte.", HeadCount = 100, Quota = 150, Employees = new List<Employee>() },
-                    new Department() { DepartmentName = "Filan Departman", DepartmentInfo = "falan filan departmanı filan açıklaması işte.", HeadCount = 100, Quota = 150, Employees = new List<Employee>() }
+                    new Department() { DepartmentName = "İnsan Kaynakları", HeadCount = 100, Quota = 150, Employees = new List<Employee>() },
+                    new Department() { DepartmentName = "Falan Departman", HeadCount = 100, Quota = 150, Employees = new List<Employee>() },
+                    new Department() { DepartmentName = "Filan Departman", HeadCount = 100, Quota = 150, Employees = new List<Employee>() }
                     );
                 _context.SaveChanges();
             }
@@ -65,6 +65,10 @@ namespace Holding.Controllers
         // GET: DepartmentsController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
             var department = await _departmentService.GetDepartmentById(id);
             if (department == null)
             {

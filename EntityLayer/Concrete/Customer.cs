@@ -12,7 +12,10 @@ namespace EntityLayer.Concrete
         [Key]
         public int CustomerID { get; set; }  // Müşteri ID'si  
         public string? CustomerName { get; set; }  // Müşteri adı  
-        public ICollection<Project>? Projects { get; set; } // 1 müşteri bizden 1'den fazla proje almış olabilir
+        public int ProjectID { get; set; }
+        public ICollection<Project>? Projects { get; set; }
+        public ICollection<CompanyCustomer>? CompanyCustomers { get; set; }
+
 
     }
 }
