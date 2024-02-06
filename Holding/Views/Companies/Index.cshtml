@@ -3,6 +3,14 @@
 @{
     ViewData["Title"] = "Index";
 }
+@if (TempData["status"] != null)
+{
+    @section Scripts {
+    <script>
+        toastr.success("@TempData["status"]");
+        </script>
+    }
+}
 
 <h1>Index</h1>
 
@@ -22,23 +30,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @item.CompanyID
-            </td>
-            <td>
-                @item.CompanyName
-            </td>
-            <td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.CompanyID
+                </td>
+                <td>
+                    @item.CompanyName
+                </td>
+                <td>
                     <div class="btn-group">
                         <a asp-controller="Companies" asp-action="Edit" asp-route-id="@item.CompanyID" class="btn btn-sm btn-primary">
                             Edit
                         </a>
                         <a asp-controller="Companies" asp-action="Delete" asp-route-id="@item.CompanyID" class="btn btn-sm btn-danger">Sil</a>
                     </div>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -52,6 +52,7 @@ namespace Holding.Controllers
             try
             {
                 _companyService.CreateCompany(company);
+                TempData["status"] = "Yeni şirket başarılı şekilde eklendi!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -86,6 +87,7 @@ namespace Holding.Controllers
             try
             {
                 _companyService.UpdateCompany(company);
+                TempData["status"] = "Şirket başarılı şekilde güncellendi!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -122,6 +124,7 @@ namespace Holding.Controllers
             try
             {
                 _companyService.RemoveCompany(deletedCompany);
+                TempData["status"] = "Şirket başarılı şekilde silindi!";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
