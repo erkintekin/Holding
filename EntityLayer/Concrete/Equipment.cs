@@ -12,5 +12,6 @@ namespace EntityLayer.Concrete
         [Key]
         public int? EquipmentID { get; set; }  // Zimmetli mal ID'si
         public string? EquipmentName { get; set; } // Zimmetli mal adı
+        public ICollection<EmployeeEquipment>? EmployeeEquipments { get; set; } // Ara tablo
     }
 }

@@ -20,7 +20,8 @@ namespace EntityLayer.Concrete
         public int Saturday { get; set; }
         public int Sunday { get; set; }
         public int TotalHours { get; set; }  // Toplam saat
-        //ICollection<Employee> Employees { get; set; }
+        public int EmployeeID { get; set; }
+        public Employee? Employee { get; set; }
 
 
     }

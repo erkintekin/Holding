@@ -11,6 +11,8 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int? PayrollID { get; set; }  // Bordro numarası
+        public int EmployeeID { get; set; } // Hangi çalışana ait olduğunu belirten özellik
+        public Employee? Employee { get; set; } // İlişkili çalışan nesnesi
         public string? Month { get; set; }  // Bordro ayı
         public decimal? BeforeTax { get; set; } //Brüt Maaş
         public decimal? NetWage { get; set; }  // Total maaş
@@ -20,5 +22,6 @@ namespace EntityLayer.Concrete
         //public int TotalWorkHours { get; set; }  // Timesheet'ten alacak
         public int VacationHours { get; set; }  // Tatilde geçen saat sayısı
         //public int TotalWorkDays { get; set; }     // Saati güne çevirecek
+      
     }
 }
