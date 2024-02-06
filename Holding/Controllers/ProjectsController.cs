@@ -2,6 +2,7 @@
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using Microsoft.EntityFrameworkCore;
 
@@ -68,22 +69,18 @@ namespace Holding.Controllers
 
         public async Task<ActionResult> Index()
         {
-
-            var companies = await _companyService.GetAllCompanies();
             var projects = await _projectService.GetAllProjects();
 
             if (!projects.Any())
             {
                 return RedirectToAction(nameof(Create));
             }
-
-
             return View(projects);
-
         }
 
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            ViewBag.Companies = new SelectList(await _companyService.GetAllCompanies(), "CompanyID", "CompanyName");
             return View();
         }
 
