@@ -93,7 +93,7 @@ namespace Holding.Controllers
                 var companies = await _companyService.GetAllCompanies();
                 _projectService.CreateProject(project);
 
-                if (project == null || project.CompanyID == null)
+                if (project == null || project == null)
                 {
                     return RedirectToAction(nameof(CompaniesController.Create));
                 }

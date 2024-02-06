@@ -19,6 +19,12 @@ namespace DataAccessLayer.Concrete
         public DbSet<Payroll>? Payrolls { get; set; }
         public DbSet<Project>? Projects { get; set; }
         public DbSet<Skill>? Skills { get; set; }
-        public DbSet<Timesheet>? Timesheets { get; set; }
+        public DbSet<CompanyCustomer>? CompanyCustomers { get; set; }
+        public DbSet<CompanyDepartment>? CompanyDepartments { get; set; }
+        public DbSet<CompanyProject>? CompanyProjects { get; set; }
+        public DbSet<EmployeeEquipment>? EmployeeEquipments { get; set; }
+        public DbSet<EmployeeProject>? EmployeeProjects { get; set; }
+        public DbSet<EmployeeSkill>? EmployeeSkills { get; set; }
+        public DbSet<ProjectSkill>? ProjectSkills { get; set; }
     }
 }
