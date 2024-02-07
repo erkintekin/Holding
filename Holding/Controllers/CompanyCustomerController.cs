@@ -94,7 +94,6 @@ namespace Holding.Controllers
                 return View(cc);
             }
         }
-
         // GET: CompanyCustomerController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
@@ -109,7 +108,6 @@ namespace Holding.Controllers
             }
             return View(cc);
         }
-
         // POST: CompanyCustomerController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -119,6 +117,10 @@ namespace Holding.Controllers
             try
             {
                 var cc = await _ccrepository.List.FirstOrDefaultAsync(c => c.CompanyCustomerID == id);
+                if (cc == null)
+                {
+                    return NotFound("Silinecek öğre bulunamadı");
+                }
                 _ccrepository.Delete(cc);
                 TempData["status"] = "Şirket-Müşteri ilişkisi başarılı şekilde silindi!";
                 return RedirectToAction(nameof(Index));
