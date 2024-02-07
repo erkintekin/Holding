@@ -15,7 +15,7 @@ namespace EntityLayer.Concrete
         public int? HeadCount { get; set; }   // Toplam işçi sayısı
         public int? Quota { get; set; }       // Toplam kontenjan
         public ICollection<Employee>? Employees { get; set; }
-        public ICollection<CompanyDepartment>? CompanyDepartments { get; set; } // Ara tablo
+        public ICollection<CompanyDepartment>? CompanyDepartments { get; set; } = new List<CompanyDepartment>(); // Ara tablo
 
         //public string? DepartmentInfo { get; set; }   // Departman açıklaması
     }
