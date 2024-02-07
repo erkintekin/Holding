@@ -29,6 +29,7 @@ builder.Services.AddScoped<ICompanyService, CompanyManager>();
 builder.Services.AddScoped<IRepository<Company>, GenericRepository<Company>>();
 builder.Services.AddScoped<ICustomerService, CustomerManager>();
 builder.Services.AddScoped<IRepository<Customer>, GenericRepository<Customer>>();
+builder.Services.AddScoped<IRepository<CompanyCustomer>, GenericRepository<CompanyCustomer>>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

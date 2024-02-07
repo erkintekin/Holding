@@ -14,7 +14,7 @@ namespace EntityLayer.Concrete
         public string? CustomerName { get; set; }  // Müşteri adı  
         public int ProjectID { get; set; }
         public ICollection<Project>? Projects { get; set; }
-        public ICollection<CompanyCustomer>? CompanyCustomers { get; set; }
+        public ICollection<CompanyCustomer>? CompanyCustomers { get; set; } = new List<CompanyCustomer>();
 
 
     }

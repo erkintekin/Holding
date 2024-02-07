@@ -115,9 +115,13 @@ namespace Holding.Controllers
         [ActionName(nameof(Delete))]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
+            if (id == null)
+            {
+                return NotFound("Geçersiz id");
+            }
             var deletedCompany = await _companyService.GetCompanyById(id);
 
-            if (deletedCompany == null || id == null)
+            if (deletedCompany == null)
             {
                 return NotFound("Lütfen geçerli bir Şirket seçiniz");
             }

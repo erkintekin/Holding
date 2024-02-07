@@ -15,7 +15,7 @@ namespace EntityLayer.Concrete
         public ICollection<CompanyProject>? CompanyProjects { get; set; } // Ara tablo
         public ICollection<Employee>? Employees { get; set; }
         public ICollection<CompanyDepartment>? CompanyDepartments { get; set; } // Ara tablo
-        public ICollection<CompanyCustomer>? CompanyCustomers { get; set; }
+        public ICollection<CompanyCustomer>? CompanyCustomers { get; set; } = new List<CompanyCustomer>();
 
     }
 }

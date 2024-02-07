@@ -13,7 +13,6 @@ namespace EntityLayer.Concrete
         public int ProjectSkillID { get; set; }
         public int ProjectID { get; set; }
         public Project? Project { get; set; }
-
         public int SkillID { get; set; }
         public Skill? Skill { get; set; }
     }
