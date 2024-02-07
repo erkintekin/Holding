@@ -38,26 +38,6 @@
                 <input asp-for="Proficiencies" class="form-control" />
                 <span asp-validation-for="Proficiencies" class="text-danger"></span>
             </div>
-
-            @if (ViewBag.Companies == null)
-            {
-                <div class="form-group">
-                    <label asp-for="CompanyID" class="control-label"></label>
-                    <select class="form-select" asp-for="CompanyID" disabled="true"></select>
-                    <span asp-validation-for="CompanyID" class="text-danger"></span>
-                </div>
-            }
-            else
-            {
-                <div class="form-group">
-                    <label asp-for="CompanyID" class="control-label"></label>
-                    <select class="form-select" asp-for="CompanyID" asp-items="ViewBag.Companies">
-                        <option disabled selected>Seçiniz</option>
-                    </select>
-                    <span asp-validation-for="CompanyID" class="text-danger"></span>
-                </div>
-            }
-
         </div>
     </div>
     <input type="submit" value="Create" class="btn btn-primary" />

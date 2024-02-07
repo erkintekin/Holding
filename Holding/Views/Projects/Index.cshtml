@@ -27,9 +27,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Duration)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CompanyID)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -51,9 +48,6 @@
                 </td>
                 <td>
                     @item.Duration saat
-                </td>
-                <td>
-                    @item.Company.CompanyName
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
