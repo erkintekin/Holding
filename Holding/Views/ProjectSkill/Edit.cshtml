@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.ProjectSkill
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ProjectSkill</h4>
+<hr />
+<form asp-action="Edit">
+    <input type="hidden" asp-for="ProjectSkillID" />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="ProjectID" class="control-label">Project Name</label>
+                <select asp-for="ProjectID" asp-items="ViewBag.ProjectSelect" class="form-select">
+                    <option disabled selected value="">Seçiniz</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="SkillID" class="control-label">Skill Name</label>
+                <select asp-for="SkillID" asp-items="ViewBag.SkillSelect" class="form-select">
+                    <option disabled selected value="">Seçiniz</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
