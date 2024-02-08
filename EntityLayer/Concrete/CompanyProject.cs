@@ -13,7 +13,6 @@ namespace EntityLayer.Concrete
         public int CompanyProjectID { get; set; }
         public int CompanyID { get; set; }
         public Company? Company { get; set; }
-
         public int ProjectID { get; set; }
         public Project? Project { get; set; }
     }

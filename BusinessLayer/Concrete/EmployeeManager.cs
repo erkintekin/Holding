@@ -23,6 +23,7 @@ namespace BusinessLayer.Concrete
         }
 
         public async Task<List<Employee>> GetAllEmployees() => await _employeeRepository.List.ToListAsync();
+
         public async Task<Employee> GetEmployeeById(int id) => await _employeeRepository.List.FirstOrDefaultAsync(s => s.EmployeeID == id);
         public void RemoveEmployee(Employee employee)
         {

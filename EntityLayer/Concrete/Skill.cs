@@ -13,7 +13,7 @@ namespace EntityLayer.Concrete
         public int? SkillID { get; set; }  // Yetenek ID'si
         public string? SkillName { get; set; }  // Yetenek adı
         public string? SkillDescription { get; set; }  // Yetenek açıklaması (opsiyonel)
-        public ICollection<EmployeeSkill>? EmployeeSkills { get; set; } // Ara tablo
-        public ICollection<ProjectSkill>? ProjectSkills { get; set; } // Ara tablo
+        public ICollection<EmployeeSkill>? EmployeeSkills { get; set; } = new List<EmployeeSkill>(); // Ara tablo
+        public ICollection<ProjectSkill>? ProjectSkills { get; set; } = new List<ProjectSkill>(); // Ara tablo
     }
 }

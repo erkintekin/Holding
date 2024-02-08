@@ -12,6 +12,7 @@ namespace DataAccessLayer.Abstract
     {
         Task Create(T p);
         IQueryable<T> List { get; }
+        IQueryable<T> Include(params Expression<Func<T, object>>[] includes);
         Task Update(T p);
         Task Delete(T p);
     }

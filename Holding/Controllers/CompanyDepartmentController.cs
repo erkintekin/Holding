@@ -97,11 +97,11 @@ namespace Holding.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName(nameof(Delete))]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             try
             {
-                var cd = _cdRepo.List.FirstOrDefault(x => x.CompanyDepartmentID == id);
+                var cd = await _cdRepo.List.FirstOrDefaultAsync(x => x.CompanyDepartmentID == id);
                 if (cd == null) NotFound("Silinecek öğe bulunamadı!");
                 _cdRepo.Delete(cd);
                 TempData["status"] = "Şirket-Departman ilişkisi başarılı şekilde silindi!";

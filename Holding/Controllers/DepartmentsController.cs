@@ -9,22 +9,12 @@ namespace Holding.Controllers
 {
     public class DepartmentsController : Controller
     {
-        private readonly Context _context;
         private readonly IDepartmentService _departmentService;
 
-        public DepartmentsController(Context context, IDepartmentService departmentService)
+        public DepartmentsController(IDepartmentService departmentService)
         {
-            _context = context;
             _departmentService = departmentService;
-            if (!_context.Departments.Any())
-            {
-                _context.Departments.AddRange(
-                    new Department() { DepartmentName = "İnsan Kaynakları", HeadCount = 100, Quota = 150, Employees = new List<Employee>() },
-                    new Department() { DepartmentName = "Falan Departman", HeadCount = 100, Quota = 150, Employees = new List<Employee>() },
-                    new Department() { DepartmentName = "Filan Departman", HeadCount = 100, Quota = 150, Employees = new List<Employee>() }
-                    );
-                _context.SaveChanges();
-            }
+
         }
         // GET: DepartmentsController
         public async Task<ActionResult> Index()

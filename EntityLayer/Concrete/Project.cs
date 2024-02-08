@@ -18,9 +18,9 @@ namespace EntityLayer.Concrete
         public string? Proficiencies { get; set; }  // Projenin istediği yeterlilikler
         public int CustomerID { get; set; }
         public Customer? Customer { get; set; }
-        public ICollection<ProjectSkill>? ProjectSkills { get; set; } // Ara tablo
-        public ICollection<CompanyProject>? CompanyProjects { get; set; } // Ara tablo
-        public ICollection<EmployeeProject>? EmployeeProjects { get; set; } // Ara tablo
+        public ICollection<ProjectSkill>? ProjectSkills { get; set; } = new List<ProjectSkill>(); // Ara tablo
+        public ICollection<CompanyProject>? CompanyProjects { get; set; } = new List<CompanyProject>(); // Ara tablo
+        public ICollection<EmployeeProject>? EmployeeProjects { get; set; } = new List<EmployeeProject>(); // Ara tablo
 
 
 

@@ -10,30 +10,18 @@ namespace Holding.Controllers
     public class EquipmentsController : Controller
     {
         private readonly IEquipmentService _equipmentService;
-        private readonly Context _context;
 
-        public EquipmentsController(IEquipmentService equipmentService, Context? context)
+        public EquipmentsController(IEquipmentService equipmentService)
         {
             _equipmentService = equipmentService;
-            _context = context;
-
-            if (!_context.Equipments.Any())
-            {
-                _context.Equipments.AddRange(
-                    new Equipment { EquipmentName = "Lenovo Laptop" },
-                    new Equipment { EquipmentName = "Mouse" },
-                    new Equipment { EquipmentName = "Laptop Case" }
-                    );
-                _context.SaveChanges();
-            }
         }
 
 
 
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
 
         public async Task<ActionResult> Index()
         {
@@ -106,7 +94,7 @@ namespace Holding.Controllers
             {
                 return NotFound();
             }
-      
+
             return View(equipment);
         }
 

@@ -22,7 +22,5 @@ namespace EntityLayer.Concrete
         public int TotalHours { get; set; }  // Toplam saat
         public int EmployeeID { get; set; }
         public Employee? Employee { get; set; }
-
-
     }
 }

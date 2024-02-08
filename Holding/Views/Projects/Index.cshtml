@@ -3,13 +3,20 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@if (TempData["status"] != null)
+{
+    @section Scripts {
+    <script>
+        toastr.success("@TempData["status"]");
+        </script>
+    }
+}
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-hover table-dark table-striped table-bordered">
     <thead>
         <tr>
             <th>
@@ -50,9 +57,12 @@
                     @item.Duration saat
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <div class="btn-group">
+                        <a asp-controller="Projects" asp-action="Edit" asp-route-id="@item.ProjectID" class="btn btn-sm btn-primary">
+                            Edit
+                        </a>
+                        <a asp-controller="Projects" asp-action="Delete" asp-route-id="@item.ProjectID" class="btn btn-sm btn-danger">Sil</a>
+                    </div>
                 </td>
             </tr>
         }

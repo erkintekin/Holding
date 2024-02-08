@@ -10,20 +10,10 @@ namespace Holding.Controllers
     public class SkillsController : Controller
     {
         private readonly ISkillService _skillService;
-        private readonly Context _context;
 
-        public SkillsController(ISkillService skillService, Context context)
+        public SkillsController(ISkillService skillService)
         {
             _skillService = skillService;
-            _context = context;
-            if (!_context.Skills.Any())
-            {
-                _context.Skills.AddRange(
-                     new Skill { SkillName = "C#", SkillDescription = "Çok iyi biliyorum." },
-                     new Skill { SkillName = "Python", SkillDescription = "İdare edecek kadar biliyorum" }
-                     );
-                _context.SaveChanges();
-            }
         }
 
         // GET: SkillsController

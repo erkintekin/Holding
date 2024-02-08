@@ -11,76 +11,21 @@ namespace Holding.Controllers
     public class ProjectsController : Controller
     {
         private readonly IProjectService _projectService;
-        private readonly ICompanyService _companyService;
-        private readonly Context? _context;
+        private readonly ICustomerService _customerService;
 
-        public ProjectsController(IProjectService projectService, ICompanyService companyService, Context? context)
+        public ProjectsController(IProjectService projectService, ICustomerService customerService)
         {
             _projectService = projectService;
-            _companyService = companyService;
-            _context = context;
-
-
-            //if (!_context.Companies.Any())
-            //{
-            //    _context.Companies.AddRange(
-            //        new Company
-            //        {
-            //            CompanyName = "Cengiz İnşaat"
-            //        },
-            //         new Company
-            //         {
-            //             CompanyName = "yemek.com"
-            //         });
-
-            //    _context.SaveChanges();
-            //}
-
-            //if (!_context.Projects.Any())
-            //{
-
-            //    _context.Projects.AddRange(
-            //        new Project
-            //        {
-            //            ProjectName = "E-ticaret Sitesi Fullstack Projesi",
-            //            ProjectNo = 17283,
-            //            Proficiencies =  "C#,.NET,React,HTML/CSS",
-            //            Price = 120000,
-            //            Duration = 200,
-            //            Employees = new List<Employee> { },
-            //            CompanyID = 1,
-            //        },
-            //        new Project
-            //        {
-            //            ProjectName = "Yemek Sitesi Fullstack Projesi",
-            //            ProjectNo = 17282,
-            //            Proficiencies = "C#,.NET,React,HTML/CSS",
-            //            Price = 150000,
-            //            Duration = 200,
-            //            Employees = new List<Employee> { },
-            //            CompanyID = 2,
-            //        }
-            //        );
-            //    _context.SaveChanges();
-            //}
+            _customerService = customerService;
         }
-
-
-
         public async Task<ActionResult> Index()
         {
             var projects = await _projectService.GetAllProjects();
-
-            if (!projects.Any())
-            {
-                return RedirectToAction(nameof(Create));
-            }
             return View(projects);
         }
-
         public async Task<ActionResult> Create()
         {
-            ViewBag.Companies = new SelectList(await _companyService.GetAllCompanies(), "CompanyID", "CompanyName");
+            ViewBag.Customers = new SelectList(await _customerService.GetAllCustomers(), "CustomerID", "CustomerName");
             return View();
         }
 
@@ -90,18 +35,13 @@ namespace Holding.Controllers
         {
             try
             {
-                var companies = await _companyService.GetAllCompanies();
                 _projectService.CreateProject(project);
-
-                if (project == null || project == null)
-                {
-                    return RedirectToAction(nameof(CompaniesController.Create));
-                }
+                TempData["status"] = "Yeni proje başarılı şekilde eklendi!";
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View("Error");
+                return View(project);
             }
 
 
@@ -109,28 +49,25 @@ namespace Holding.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-
+            if (id == null) NotFound();
             var project = await _projectService.GetProjectById(id);
+            if (project == null) NotFound("Proje bulunamadı");
 
-            if (project == null)
-            {
-                return NotFound();
-            }
+            ViewBag.CustomerSelect = new SelectList(await _customerService.GetAllCustomers(), "CustomerID", "CustomerName", project.ProjectID);
 
             return View(project);
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Project project)
         {
 
-            if (id != project.ProjectID)
-            {
-                return NotFound();
-            }
+            if (id != project.ProjectID) NotFound();
             try
             {
                 _projectService.UpdateProject(project);
-                return View(nameof(Index));
+                TempData["status"] = "Proje başarılı şekilde güncellendi!";
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -140,17 +77,9 @@ namespace Holding.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) NotFound();
             var project = await _projectService.GetProjectById(id);
-
-            if (id != project.ProjectID)
-            {
-                return NotFound();
-            }
-
+            if (project == null) NotFound();
             return View(project);
         }
         [HttpPost]
@@ -158,24 +87,18 @@ namespace Holding.Controllers
         [ActionName(nameof(Delete))]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-
-            var deletedProject = await _projectService.GetProjectById(id);
-
-            if (deletedProject == null || id == null)
-            {
-                return NotFound();
-            }
             try
             {
+                var deletedProject = await _projectService.GetProjectById(id);
+                if (deletedProject == null) NotFound("Silinecek Proje bulunamadı");
                 _projectService.RemoveProject(deletedProject);
+                TempData["status"] = "Proje başarılı şekilde silindi!";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                throw new Exception("Silme işlemi başarısız!" + ex);
             }
         }
-
-
     }
 }

@@ -37,5 +37,15 @@ namespace DataAccessLayer.Concrete.Repositories
             _context.Set<T>().Remove(p);
             await _context.SaveChangesAsync();
         }
+
+        public IQueryable<T> Include(params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+            return query;
+        }
     }
 }

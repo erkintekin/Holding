@@ -9,22 +9,9 @@ namespace Holding.Controllers
     public class CustomersController : Controller
     {
         private readonly ICustomerService _customerService;
-        private readonly Context _context;
-
-        public CustomersController(ICustomerService customerService, Context context)
+        public CustomersController(ICustomerService customerService)
         {
             _customerService = customerService;
-            _context = context;
-            if (!_context.Customers.Any())
-            {
-                _context.Customers.AddRange(
-                     new Customer { CustomerName = "H şirketi" },
-                     new Customer { CustomerName = "A şirketi" },
-                     new Customer { CustomerName = "B şirketi" },
-                     new Customer { CustomerName = "C şirketi" }
-                     );
-                _context.SaveChanges();
-            }
         }
         // GET: CustomerController
         public async Task<ActionResult> Index()
