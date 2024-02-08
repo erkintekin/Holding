@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.CompanyProject
+﻿@model EntityLayer.Concrete.EmployeeSkill
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,23 +6,23 @@
 
 <h1>Edit</h1>
 
-<h4>CompanyProject</h4>
+<h4>EmployeeSkill</h4>
 <hr />
 <form asp-action="Edit">
-    <input type="hidden" asp-for="CompanyProjectID" />
+    <input type="hidden" asp-for="EmployeeSkillID" />
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="CompanyID" class="control-label">Company Name</label>
-                <select asp-for="CompanyID" asp-items="ViewBag.CompanySelect" class="form-select">
+                <label asp-for="EmployeeID" class="control-label">Employee Name</label>
+                <select asp-for="EmployeeID" asp-items="ViewBag.EmployeeSelect" class="form-select">
                     <option disabled selected value="">Seçiniz</option>
                 </select>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="ProjectID" class="control-label">Project Name</label>
-                <select asp-for="ProjectID" asp-items="ViewBag.ProjectSelect" class="form-select">
+                <label asp-for="SkillID" class="control-label">Skill Name</label>
+                <select asp-for="SkillID" asp-items="ViewBag.SkillSelect" class="form-select">
                     <option disabled selected value="">Seçiniz</option>
                 </select>
             </div>

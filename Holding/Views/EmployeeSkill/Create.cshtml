@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.EmployeeProject
+﻿@model EntityLayer.Concrete.EmployeeSkill
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,7 @@
 
 <h1>Create</h1>
 
-<h4>EmployeeProject</h4>
+<h4>EmployeeSkill</h4>
 <hr />
 <form asp-action="Create">
     <div class="row">
@@ -20,8 +20,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="ProjectID" class="control-label">Project Name</label>
-                <select asp-for="ProjectID" asp-items="ViewBag.Projects" class="form-select">
+                <label asp-for="SkillID" class="control-label">Skill Name</label>
+                <select asp-for="SkillID" asp-items="ViewBag.Skills" class="form-select">
                     <option disabled selected value="">Seçiniz</option>
                 </select>
             </div>
