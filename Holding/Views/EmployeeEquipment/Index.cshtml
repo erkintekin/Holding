@@ -8,7 +8,7 @@
     @section Scripts {
     <script>
         toastr.success("@TempData["status"]");
-        </script>
+    </script>
     }
 }
 <h1>Index</h1>
@@ -23,10 +23,10 @@
                 @Html.DisplayNameFor(model => model.EmployeeEquipmentID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EquipmentID)
+                @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeeID)
+                @Html.DisplayNameFor(model => model.Employee.Name)
             </th>
             <th></th>
         </tr>
@@ -39,10 +39,10 @@
                     @Html.DisplayFor(modelItem => item.EmployeeEquipmentID)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EquipmentID)
+                    @Html.DisplayFor(modelItem => item.Equipment.EquipmentName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeID)
+                    @Html.DisplayFor(modelItem => item.Employee.Name)
                 </td>
                 <div class="btn-group">
                     <a asp-action="Edit" asp-route-id="@item.EmployeeEquipmentID" class="btn btn-sm btn-primary">

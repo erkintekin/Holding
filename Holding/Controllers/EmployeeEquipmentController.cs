@@ -25,7 +25,6 @@ namespace Holding.Controllers
             var ee = await _eeRepo.Include(e => e.Equipment, ee => ee.Employee).ToListAsync();
             return View(ee);
         }
-
         // GET: EmployeeEquipmentController/Details/5
         public ActionResult Details(int id)
         {
